@@ -153,7 +153,9 @@ Route::screen('example-layouts', ExampleLayoutsScreen::class)->name('platform.ex
 Route::screen('example-charts', ExampleChartsScreen::class)->name('platform.example.charts');
 Route::screen('example-editors', ExampleTextEditorsScreen::class)->name('platform.example.editors');
 Route::screen('example-cards', ExampleCardsScreen::class)->name('platform.example.cards');
-Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
+Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name(
+    'platform.example.advanced'
+);
 
 // Site Cupcatering
 
@@ -167,7 +169,7 @@ Route::screen('categories', CategoryListScreen::class)
 
 Route::screen('category/{category?}', CategoryEditScreen::class)
     ->name('platform.category.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.category.list')
             ->push('Category');
@@ -184,13 +186,13 @@ Route::screen('orders', OrderListScreen::class)
 
 Route::screen('order/{order?}', OrderEditScreen::class)
     ->name('platform.order.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.order.list')
             ->push('Order');
     });
 
-Route::screen('notice', NoticeListScreen::class)
+Route::screen('notices', NoticeListScreen::class)
     ->name('platform.notice.list')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
@@ -201,24 +203,23 @@ Route::screen('notice', NoticeListScreen::class)
 
 Route::screen('notice/{notice?}', NoticeEditScreen::class)
     ->name('platform.notice.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.notice.list')
             ->push('Notice');
     });
 
 
-
 Route::screen('faqs', FAQListScreen::class)
     ->name('platform.faq.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('FAQ List', route('platform.faq.list'));
     });
 Route::screen('faq/{faq?}', FAQEditScreen::class)
     ->name('platform.faq.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.faq.list')
             ->push('FAQ');
@@ -226,14 +227,14 @@ Route::screen('faq/{faq?}', FAQEditScreen::class)
 
 Route::screen('reviews', ReviewListScreen::class)
     ->name('platform.review.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Reviews', route('platform.review.list'));
     });
 Route::screen('review/{review?}', ReviewEditScreen::class)
     ->name('platform.review.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.review.list')
             ->push('Review');
@@ -241,14 +242,14 @@ Route::screen('review/{review?}', ReviewEditScreen::class)
 
 Route::screen('vacancies', VacancyListScreen::class)
     ->name('platform.vacancy.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Vacancies', route('platform.vacancy.list'));
     });
 Route::screen('vacancy/{vacancy?}', VacancyEditScreen::class)
     ->name('platform.vacancy.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.vacancy.list')
             ->push('Vacancy');
@@ -256,14 +257,14 @@ Route::screen('vacancy/{vacancy?}', VacancyEditScreen::class)
 // youtube
 Route::screen('youtube', YoutubeListScreen::class)
     ->name('platform.youtube.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Youtubes', route('platform.youtube.list'));
     });
 Route::screen('youtubevideo/{youtubevideo?}', YoutubeEditScreen::class)
     ->name('platform.youtube.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.youtube.list')
             ->push('Youtubevideo');
@@ -271,33 +272,32 @@ Route::screen('youtubevideo/{youtubevideo?}', YoutubeEditScreen::class)
 
 // слайдер на главной странице
 Route::screen('slider', SliderglListScreen::class)
-->name('platform.slider.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Sliders', route('platform.slider.list'));
-});
+    ->name('platform.slider.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Sliders', route('platform.slider.list'));
+    });
 Route::screen('sliderel/{sliderel?}', SliderglEditScreen::class)
-->name('platform.slider.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.slider.list')
-        ->push('Sliderel');
-});
-
+    ->name('platform.slider.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.slider.list')
+            ->push('Sliderel');
+    });
 
 
 //портфолио
 Route::screen('portfolio', PortfolioListScreen::class)
     ->name('platform.portfolio.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Portfolio', route('platform.portfolio.list'));
     });
 Route::screen('portfolioel/{portfolioel?}', PortfolioEditScreen::class)
     ->name('platform.portfolio.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.portfolio.list')
             ->push('Portfolioel');
@@ -306,14 +306,14 @@ Route::screen('portfolioel/{portfolioel?}', PortfolioEditScreen::class)
 //категории портфолио
 Route::screen('categoryportfolio', CategoryPortfolioListScreen::class)
     ->name('platform.categoryportfolio.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('CategoryPortfolio', route('platform.categoryportfolio.list'));
     });
 Route::screen('categoryedit/{categoryedit?}', CategoryPortfolioEditScreen::class)
     ->name('platform.categoryedit.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.categoryportfolio.list')
             ->push('Categoryedit');
@@ -321,47 +321,47 @@ Route::screen('categoryedit/{categoryedit?}', CategoryPortfolioEditScreen::class
 
 //категории стилей для взрос стола
 Route::screen('categoryportfoliovz', CategoryPortfolioSTVListScreen::class)
-->name('platform.categoryportfoliovz.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('CategoryPortfoliovz', route('platform.categoryportfoliovz.list'));
-});
+    ->name('platform.categoryportfoliovz.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('CategoryPortfoliovz', route('platform.categoryportfoliovz.list'));
+    });
 Route::screen('categoryvzedit/{categoryvzedit?}', CategoryPortfolioSTVEditScreen::class)
     ->name('platform.categoryportfoliovz.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.categoryportfoliovz.list')
             ->push('Categoryvzedit');
-});
+    });
 
 //категории для готовых решений
 Route::screen('categorygr', CategoryGRListScreen::class)
-->name('platform.categorygr.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('CategoryGR', route('platform.categorygr.list'));
-});
+    ->name('platform.categorygr.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('CategoryGR', route('platform.categorygr.list'));
+    });
 Route::screen('categorygred/{categorygred?}', CategoryGREditScreen::class)
     ->name('platform.categorygr.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.categorygr.list')
             ->push('Categorygredit');
-});
+    });
 
 //готовые решения
 Route::screen('prodgr', ProdGRListScreen::class)
     ->name('platform.prodgr.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Prodgr', route('platform.prodgr.list'));
     });
 Route::screen('prodgrel/{prodgrel?}', ProdGREditScreen::class)
     ->name('platform.prodgr.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.prodgr.list')
             ->push('Prodgrel');
@@ -370,30 +370,30 @@ Route::screen('prodgrel/{prodgrel?}', ProdGREditScreen::class)
 
 //категории стилей для взрос стола
 Route::screen('categoryportfoliodet', CategoryPortfolioDETListScreen::class)
-->name('platform.categoryportfoliodet.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('CategoryPortfoliodet', route('platform.categoryportfoliodet.list'));
-});
+    ->name('platform.categoryportfoliodet.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('CategoryPortfoliodet', route('platform.categoryportfoliodet.list'));
+    });
 Route::screen('categorydetedit/{categorydetedit?}', CategoryPortfolioDETEditScreen::class)
     ->name('platform.categoryportfoliodet.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.categoryportfoliodet.list')
             ->push('Categorydetedit');
-});
+    });
 
 Route::screen('seos', SEOListScreen::class)
     ->name('platform.seo.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('SEO', route('platform.seo.list'));
     });
 Route::screen('seo/{seo?}', SEOEditScreen::class)
     ->name('platform.seo.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.seo.list')
             ->push('SEO');
@@ -401,14 +401,14 @@ Route::screen('seo/{seo?}', SEOEditScreen::class)
 
 Route::screen('products', ProductListScreen::class)
     ->name('platform.product.list')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
             ->push('Products', route('platform.product.list'));
     });
 Route::screen('product/{product?}', ProductEditScreen::class)
     ->name('platform.product.edit')
-    ->breadcrumbs(function (Trail $trail){
+    ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.product.list')
             ->push('Product');
@@ -416,101 +416,101 @@ Route::screen('product/{product?}', ProductEditScreen::class)
 
 // Поводы
 Route::screen('povodi', PovListScreen::class)
-->name('platform.povodi.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Povodi', route('platform.povodi.list'));
-});
+    ->name('platform.povodi.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Povodi', route('platform.povodi.list'));
+    });
 Route::screen('povod/{povod?}', PovEditScreen::class)
-->name('platform.povodi.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.povodi.list')
-        ->push('Povod');
-});
+    ->name('platform.povodi.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.povodi.list')
+            ->push('Povod');
+    });
 
 
 // Категория форматов
 Route::screen('catformati', CatFormatListScreen::class)
-->name('platform.catformati.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Сatformati', route('platform.catformati.list'));
-});
+    ->name('platform.catformati.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Сatformati', route('platform.catformati.list'));
+    });
 Route::screen('catformat/{catformat?}', CatFormatEditScreen::class)
-->name('platform.catformati.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.catformati.list')
-        ->push('Catformat');
-});
+    ->name('platform.catformati.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.catformati.list')
+            ->push('Catformat');
+    });
 
 
 // Форматы
 Route::screen('formati', FormatListScreen::class)
-->name('platform.formati.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Formati', route('platform.formati.list'));
-});
+    ->name('platform.formati.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Formati', route('platform.formati.list'));
+    });
 Route::screen('format/{format?}', FormatEditScreen::class)
-->name('platform.formati.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.formati.list')
-        ->push('Format');
-});
+    ->name('platform.formati.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.formati.list')
+            ->push('Format');
+    });
 
 
 // QUIZ
 Route::screen('quiz', QuizListScreen::class)
-->name('platform.quiz.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Quiz', route('platform.quiz.list'));
-});
+    ->name('platform.quiz.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Quiz', route('platform.quiz.list'));
+    });
 Route::screen('quizitem/{quizitem?}', QuizEditScreen::class)
-->name('platform.quiz.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.quiz.list')
-        ->push('Quizitem');
-});
+    ->name('platform.quiz.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.quiz.list')
+            ->push('Quizitem');
+    });
 
 
 // Гарантия качества
 Route::screen('garkach', GarKachListScreen::class)
-->name('platform.garkach.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Garkach', route('platform.garkach.list'));
-});
+    ->name('platform.garkach.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Garkach', route('platform.garkach.list'));
+    });
 Route::screen('garkachitem/{garkachitem?}', GarKachEditScreen::class)
-->name('platform.garkach.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.garkach.list')
-        ->push('Garkachitem');
-});
+    ->name('platform.garkach.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.garkach.list')
+            ->push('Garkachitem');
+    });
 
 
 // Наши люди
 Route::screen('ourp', OurpListScreen::class)
-->name('platform.ourp.list')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.index')
-        ->push('Ourp', route('platform.ourp.list'));
-});
+    ->name('platform.ourp.list')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('Ourp', route('platform.ourp.list'));
+    });
 Route::screen('ourpitem/{ourpitem?}', OurpEditScreen::class)
-->name('platform.ourp.edit')
-->breadcrumbs(function (Trail $trail){
-    return $trail
-        ->parent('platform.ourp.list')
-        ->push('Ourpitem');
-});
+    ->name('platform.ourp.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.ourp.list')
+            ->push('Ourpitem');
+    });

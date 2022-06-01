@@ -9,7 +9,6 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 
@@ -237,6 +236,7 @@ class UserController extends Controller
             }
             $data['cont'] = SEO::where('page', 'contacts')->first();
             $data['page'] = SEO::where('page', 'notifications')->first();
+            $data['notices'] = Auth::user()->notices()->orderBy('created_at', 'desc')->paginate();
 
             return view('users.detail.notifications', $data);
         };

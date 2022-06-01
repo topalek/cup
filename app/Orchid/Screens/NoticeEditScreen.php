@@ -2,14 +2,16 @@
 
 namespace App\Orchid\Screens;
 
-use App\Models\Order;
-use App\Models\Product;
-use Carbon\Carbon;
+use App\Models\Notice;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
@@ -17,21 +19,21 @@ use Orchid\Support\Facades\Layout;
 
 class NoticeEditScreen extends Screen
 {
-    public $name = 'Заказ';
-    public $description = 'CUP - Заказы';
+    public $name = 'Создать уведомление';
+    public $description = 'CUP - уведомления';
     public $exists = false;
-    public $order;
+    public $notice;
 
-    public function query(Order $order): array
+    public function query(Notice $notice): array
     {
-        $this->exists = $order->exists;
-        $this->order = $order;
+        $this->exists = $notice->exists;
+        $this->notice = $notice;
         if ($this->exists) {
-            $this->name = 'Редактировать заказ: #' . $order->id;
+            $this->name = 'Редактировать уведомление: ' . $notice->title;
         }
-        $order->load('products');
+        $notice->load(['users', 'attachment']);
         return [
-            'order' => $order
+            'notice' => $notice
         ];
     }
 
@@ -61,92 +63,48 @@ class NoticeEditScreen extends Screen
         return [
             Layout::rows([
                 Group::make([
-                    Input::make('order.client_name')
-                        ->title('Имя')
+                    Input::make('notice.title')
+                        ->title('Заголовок')
                         ->required(),
-                    Input::make('order.client_phone')
-                        ->title('Телефон')
-                        ->required(),
-
-                    Select::make('order.status')
-                        ->options(Order::getStatusList())
-                        ->title('Статус')
-                        ->required(),
-                    Input::make('order.event_date')
-                        ->type('date')
-                        ->value(function ($order) {
-                            $date = date('Y-m-d');
-                            if($order instanceof  Carbon){
-                                $date = $order->format('Y-m-d');
-                            }
-                            return $date;
-                        })
-                        ->title('Дата')
+                    Select::make('notice.users')
+                        ->fromModel(User::class, 'name')
+                        ->multiple()
+                        ->title('Клиенты')
                         ->required(),
 
                 ]),
                 Group::make([
-                    Input::make('order.reason')
-                        ->title('Повод')
+                    Quill::make('notice.content')
+                        ->title('Контент')
                         ->required(),
-                    Input::make('order.format')
-                        ->title('Формат')
-                        ->required(),
-                    Input::make('order.guest_count')
-                        ->type('number')
-                        ->title('Кол-во гостей'),
-                ]),
-                Group::make([
-                    Input::make('order.city')
-                        ->title('Город')
-                        ->required(),
-                    Input::make('order.street')
-                        ->title('Улица')
-                        ->required(),
-                    Input::make('order.building')
-                        ->title('Дом')
-                        ->required(),
-
-                    Input::make('order.payment_type')
-                        ->title('Способ оплаты')
-                        ->required(),
+                    Picture::make('notice.img')
+                        ->title('Изображение уведомления'),
                 ])
             ])->title('Основная информация'),
-            Layout::view('order.products'),
-            Layout::modal('products', [
-                Layout::rows([
-                    Select::make('product')
-                        ->empty('- Выберите товар -')
-                        ->fromModel(Product::class,'name','id')
-                        ->title('Товар')
-                        ->required(),
-                    Input::make('count')
-                        ->value(1)
-                        ->type('number')
-                        ->title('Кол-во'),
-                    Input::make('id')
-                        ->value($this->order->id)
-                        ->type('hidden'),
-                ]),
-            ]),
         ];
     }
 
-    public function createOrUpdate(Order $order, Request $request)
+    public function createOrUpdate(Notice $notice, Request $request)
     {
-        $order->fill($request->get('order'))->save();
-        $order->attachment()->syncWithoutDetaching(
-            $request->input('order.attachment', [])
-        );
+        $data = $request->get('notice');
+        $img = Arr::get($data, 'img');
+        if ($img) {
+            $img = str_replace(url('/'), '', $img);
+            $img = str_replace('//', '/', $img);
+        }
+        $data['img'] = $img;
+        $notice->fill($data)->save();
+        $notice->users()->sync($request->input('notice.users', []));
+
         Alert::info('You have successfully created.');
-        return redirect()->route('platform.order.list');
+        return redirect()->route('platform.notice.list');
     }
 
-    public function remove(Order $order)
+    public function remove(Notice $notice)
     {
-        $order->delete();
+        $notice->delete();
         Alert::info('You have successfully deleted.');
-        return redirect()->route('platform.order.list');
+        return redirect()->route('platform.notice.list');
     }
 
 }

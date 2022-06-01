@@ -13,9 +13,18 @@ class CreateNoticeTable extends Migration
      */
     public function up()
     {
-        Schema::create('notice', function (Blueprint $table) {
+        Schema::create('notices', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->string('img')->nullable();;
             $table->timestamps();
+        });
+
+        Schema::create('notice_user', function (Blueprint $table) {
+            $table->foreignId('notice_id');
+            $table->foreignId('user_id');
+            $table->primary(['notice_id', 'user_id']);
         });
     }
 
@@ -26,6 +35,7 @@ class CreateNoticeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notice');
+        Schema::dropIfExists('notice_user');
+        Schema::dropIfExists('notices');
     }
 }

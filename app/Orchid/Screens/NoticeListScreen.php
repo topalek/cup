@@ -2,27 +2,27 @@
 
 namespace App\Orchid\Screens;
 
-use App\Models\Order;
-use App\Orchid\Layouts\OrderListLayout;
+use App\Models\Notice;
+use App\Orchid\Layouts\NoticeListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class NoticeListScreen extends Screen
 {
-    public $name = 'Заказы';
-    public $description = 'CUP - Заказы';
+    public $name = 'Уведомления';
+    public $description = 'CUP - уведомления';
 
     public function query(): array
     {
         return [
-            'notices' => Order::filters()->defaultSort('id')->paginate()
+            'notices' => Notice::filters()->defaultSort('id')->paginate()
         ];
     }
 
     public function commandBar(): array
     {
         return [
-            Link::make('Создать заказ')
+            Link::make('Создать уведомление')
                 ->icon('plus')
                 ->route('platform.notice.edit')
         ];
@@ -31,7 +31,7 @@ class NoticeListScreen extends Screen
     public function layout(): array
     {
         return [
-            OrderListLayout::class,
+            NoticeListLayout::class,
         ];
     }
 }

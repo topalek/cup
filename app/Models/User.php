@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use League\CommonMark\Extension\Attributes\Node\Attributes;
 use Orchid\Platform\Models\User as Authenticatable;
 
 class User extends Authenticatable
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        
+
         'password',
         'permissions',
         'name',
@@ -75,7 +74,13 @@ class User extends Authenticatable
         'created_at',
     ];
 
-    public function setPasswordAttribute($password){
-      $this->attributes['password']=Hash::make($password);
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function notices()
+    {
+        return $this->belongsToMany(Notice::class);
     }
 }
