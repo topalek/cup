@@ -202,7 +202,7 @@ class UserController extends Controller
             $data['orders'] = Order::whereUserId(Auth::id())->orderBy(
                 'created_at',
                 'desc'
-            )->paginate(3);
+            )->paginate(10);
             return view('users.detail.history', $data);
         };
 
@@ -236,7 +236,7 @@ class UserController extends Controller
             }
             $data['cont'] = SEO::where('page', 'contacts')->first();
             $data['page'] = SEO::where('page', 'notifications')->first();
-            $data['notices'] = Auth::user()->notices()->orderBy('created_at', 'desc')->paginate();
+            $data['notices'] = Auth::user()->notices()->orderBy('created_at', 'desc')->paginate(10);
 
             return view('users.detail.notifications', $data);
         };
