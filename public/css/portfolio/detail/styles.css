@@ -1,0 +1,257 @@
+
+.portfolioDetail {
+    margin-top: 55px;
+    margin-bottom: 100px;
+  }
+  .portfolioDetail h1 {
+    text-align: center;
+    font-size: 54px;
+  }
+  .portfolioDetail .item {
+    margin-top: 56px;
+    padding: 63px 55px 40px;
+    border: 1px solid #e2dac9;
+    border-radius: 7px;
+  }
+  .portfolioDetail .item__wr {
+    display: flex;
+    justify-content: space-between;
+  }
+  .portfolioDetail .item__wr .leftBlock {
+    width: auto;
+    margin-right: 10px;
+  }
+  .portfolioDetail .item__wr .leftBlock .title {
+    font-size: 44px;
+    line-height: 56px;
+    color: #5f5839;
+    font-family: "Anglecia";
+    font-weight: 600;
+  }
+  .portfolioDetail .item__wr .leftBlock .char {
+    margin-top: 46px;
+    padding-right: 55px;
+  }
+  .portfolioDetail .item__wr .leftBlock .char__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  .portfolioDetail .item__wr .leftBlock .char__item:last-of-type {
+    margin-bottom: 0;
+  }
+  .portfolioDetail .item__wr .leftBlock .char__item .left {
+    font-size: 14px;
+    line-height: 19px;
+    color: #5f5839;
+    font-family: "OpenSans";
+    font-weight: 700;
+  }
+  .portfolioDetail .item__wr .leftBlock .char__item .right {
+    font-size: 14px;
+    line-height: 19px;
+    color: #5f5839;
+    opacity: 0.76;
+    font-family: "OpenSans";
+  }
+  .portfolioDetail .item__wr .leftBlock .order {
+    width: 458px;
+    height: 79px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #c8a98d;
+    border-radius: 71px;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c8a98d;
+    font-family: "Anglecia";
+    font-weight: 700;
+    margin-top: 59px;
+    transition: ease-in-out 0.25s;
+    -webkit-transition: ease-in-out 0.25s;
+    -moz-transition: ease-in-out 0.25s;
+    -ms-transition: ease-in-out 0.25s;
+    -o-transition: ease-in-out 0.25s;
+  }
+  .portfolioDetail .item__wr .leftBlock .order:hover {
+    border: 2px solid #5f5839;
+    color: #5f5839;
+  }
+  .portfolioDetail .item__wr .leftBlock .gallery {
+    width: 100%;
+    max-width: 525px;
+    margin-top: 63px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .portfolioDetail .video {
+    width: 100%;
+    height: 581px;
+    margin-top: 10px;
+  }
+  .portfolioDetail .item__wr .leftBlock .gallery__item {
+    width: 171px;
+    height: 136px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .portfolioDetail .item__wr .leftBlock .gallery__item:last-of-type {
+    margin-right: 0;
+  }
+  .portfolioDetail .item__wr .rightBlock {
+    max-width: 808px;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .portfolioDetail .item__wr .rightBlock  img {
+    position: absolute;
+  }
+  .other-slider {
+    position: relative;
+    margin-top: 48px;
+    margin-bottom: 100px;
+  }
+  .other-slider > .container {
+    position: relative;
+  }
+  .other-slider .ready__item {
+    max-width: 364px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .other-slider .ready__item .title {
+    font-size: 21px;
+    line-height: 24px;
+    color: #5f5839;
+    font-family: "Anglecia";
+    font-weight: 500;
+    margin-top: 34px;
+  }
+  .other-slider .ready__item .link {
+    width: 125px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #c8a98d;
+    border-radius: 71px;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: "Anglecia";
+    font-weight: 600;
+    margin-top: 34px;
+    transition: ease-in-out 0.24s;
+    -webkit-transition: ease-in-out 0.24s;
+    -moz-transition: ease-in-out 0.24s;
+    -ms-transition: ease-in-out 0.24s;
+    -o-transition: ease-in-out 0.24s;
+  }
+  .other-slider .ready__item .link:hover {
+    background: #5f5839;
+  }
+  .other__wp {
+    width: 90%;
+    margin-top: 60px;
+  }
+  .other__button-prev {
+    position: absolute;
+    left: 10px;
+    top: 350px;
+    z-index: 10;
+  }
+  .other__button-next {
+    position: absolute;
+    right: 10px;
+    top: 350px;
+    z-index: 10;
+  }
+  .other__pagination {
+    position: relative !important;
+    margin-top: 84px;
+    margin-bottom: 102px;
+  }
+  .other__pagination .swiper-pagination-bullet {
+    opacity: 1;
+    margin-right: 4px;
+  }
+  .other__pagination .swiper-pagination-bullet:last-of-type {
+    margin-right: 0;
+  }
+  @media (max-width: 1280px) {
+    .ready__image--bigsize,
+    .ready__image--minsize {
+      height: 318px;
+    }
+  }
+  @media (max-width: 950px) {
+    .portfolioDetail .item__wr {
+      flex-direction: column;
+    }
+    .portfolioDetail .item__wr .leftBlock {
+      margin-right: 0;
+    }
+    .portfolioDetail .item__wr .rightBlock {
+      margin-top: 10px;
+      height: 300px;
+    }
+    .portfolioDetail .video {
+      height: 300px;
+    }
+    .portfolioDetail .item__wr .leftBlock .order {
+      margin: 0 auto;
+      margin-top: 48px;
+    }
+    .portfolioDetail .item__wr .leftBlock .char {
+      padding-right: 0;
+    }
+  }
+  @media (max-width: 600px) {
+    .portfolioDetail .item {
+      padding: 51px 20px 27px;
+    }
+    .portfolioDetail .item__wr .leftBlock .title {
+      font-size: 24px;
+      line-height: 26px;
+    }
+    .portfolioDetail .item__wr .leftBlock .order {
+      width: 100%;
+    }
+  }
+  @media (max-width: 475px) {
+    .portfolioDetail .item__wr .rightBlock {
+      height: 200px;
+    }
+    .portfolioDetail .video {
+      height: 200px;
+    }
+    .portfolioDetail .item__wr .leftBlock .gallery__item {
+      width: 119px;
+      height: 115px;
+    }
+  }
+  @media (max-width: 425px) {
+    .portfolioDetail .item__wr .leftBlock .char__item .left {
+      font-size: 12px;
+      line-height: 16px;
+    }
+    .portfolioDetail .item__wr .leftBlock .char__item .right {
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+    }
+  }
+  @media (max-width: 375px) {
+    .portfolioDetail .item__wr .leftBlock .order {
+      font-size: 16px;
+    }
+  }
+  

@@ -1,0 +1,156 @@
+/* хиро */
+.hero {
+  background: url("/assets/img/weddingbg.png") no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  color: #fff;
+  padding-top: 229px;
+  padding-bottom: 207px;
+}
+.hero__title {
+  text-align: center;
+  color: #fff;
+}
+.hero__text {
+  font-family: "OpenSans-Regular";
+  font-size: 18px;
+  text-align: center;
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 40px;
+  text-align: center;
+}
+.hero__item {
+  display: flex;
+  justify-content: center;
+  width: 98%;
+}
+.hero__link {
+  display: inline-flex;
+  position: relative;
+  height: 42px;
+  font-size: 16px;
+  align-items: center;
+  margin-top: 123px;
+  letter-spacing: 3px;
+}
+/* стиль */
+.style {
+  position: relative;
+  margin-top: 59px;
+}
+.style__items {
+  display: flex;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.style__decor {
+  width: 364px;
+  height: 364px;
+  z-index: -1;
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  border-radius: 50%;
+  background: #f2eee5;
+}
+
+.style__item {
+  display: flex;
+  flex: 0 1 48%;
+}
+.style__item-image {
+  width: 289px;
+}
+.style__item--width {
+  flex: 0 1 50%;
+}
+.style__item--widthall {
+  flex: 0 1 100%;
+}
+.style__item-image--big {
+  flex: 0 1 68%;
+  height: 305px;
+}
+.style__item:nth-child(n + 3) {
+  margin-top: 30px;
+}
+.style__item-content {
+  border: 1px solid #e2dac9;
+  border-left: none;
+  padding: 30px 55px 21px 37px;
+
+  flex: 0 1 60%;
+}
+.style__item-title {
+  font-weight: 500;
+  font-size: 24px;
+  font-family: "Anglecia";
+  color: #5f5839;
+}
+.style__item-text {
+  font-family: "OpenSans";
+  font-size: 14px;
+  color: #828282;
+  margin-top: 30px;
+}
+.style__item-link {
+  font-family: "Anglecia";
+  position: relative;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  color: #c8a98d;
+  font-size: 16px;
+  margin-top: 59px;
+}
+.style__item--reverse {
+  flex-direction: row-reverse;
+  border: 1px solid #e2dac9;
+  border-right: none;
+}
+@media (max-width: 1100px) {
+  /* стили */
+  .style__item-image {
+    width: 30%;
+  }
+  .style__item-image--big {
+    flex-basis: 30%;
+    height: auto;
+  }
+  .style__item-content {
+    text-align: justify;
+    padding: 30px 17px 21px 37px;
+    flex: 0 1 70%;
+  }
+}
+@media (max-width: 1024px) {
+  /* хиро */
+  .hero__title {
+    font-size: 49px;
+  }
+  .hero__text {
+    width: 100%;
+  }
+  /* премимум */
+  .premium {
+    padding-top: 120px;
+  }
+}
+@media (max-width: 768px) {
+  /* стили */
+  .style__item {
+    flex: 0 1 100%;
+  }
+  .style__item:nth-child(n + 2) {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 374px) {
+  /* хиро */
+  .hero__title {
+    font-size: 40px;
+  }
+}

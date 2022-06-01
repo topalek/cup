@@ -1,0 +1,144 @@
+.feedback {
+  position: relative;
+  height: 542px;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+/* картинка слева  */
+.feedback__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 542px;
+}
+
+/* форма */
+.form-feedback {
+  margin-left: auto;
+  width: 55%;
+  position: relative;
+  color: #5f5839;
+}
+.form-feedback__inner {
+  margin-left: auto;
+  max-width: 650px;
+}
+.feedback__request-title {
+  font-size: 77px;
+  font-family: "Anglecia-Medium";
+  padding-top: 60px;
+}
+.feedback__inputs {
+  display: flex;
+  margin-top: 92px;
+}
+.feedback__input {
+  width: 50%;
+  height: 65px;
+  border: 1px solid #c8a98d;
+  border-radius: 40px;
+  font-size: 26px;
+  padding-left: 30px;
+  color: #5f5839;
+  font-family: "Anglecia-Medium";
+  background: none;
+}
+.feedback__input:focus {
+  outline: none;
+}
+.feedback__input:last-child {
+  margin-left: 31px;
+}
+.feedback__input::placeholder {
+  color: #5f5839;
+  font-size: 26px;
+  font-family: "Anglecia-Medium";
+}
+.feedback__submit {
+  position: relative;
+  border: none;
+  background: none;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Anglecia-Medium";
+  color: #5f5839;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  margin-top: 52px;
+  height: 42px;
+  cursor: pointer;
+}
+
+
+
+
+.feedback__decor {
+  width: 603px;
+  height: 603px;
+  position: absolute;
+  top: -15px;
+  right: -210px;
+  z-index: -1;
+  background: #f2eee5;
+  border-radius: 50%;
+}
+@media (max-width: 1230px) {
+  .form-feedback__inner {
+    margin-left: 15px;
+  }
+  .feedback__request-title {
+    font-size: 64px;
+  }
+}
+@media (max-width: 1024px) {
+  .feedback__image {
+    display: none;
+  }
+  .form-feedback {
+    width: 100%;
+    margin-left: 0;
+  }
+  .form-feedback__inner {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .feedback {
+    height: auto;
+  }
+  .feedback__request-title {
+    font-size: 48px;
+    padding-top: 0;
+  }
+  .feedback__decor {
+    width: 450px;
+    height: 450px;
+    top: 40px;
+  }
+  .feedback__inputs {
+    flex-wrap: wrap;
+    margin-top: 35px;
+  }
+  .feedback__input {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .feedback__input:last-child {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 440px) {
+  .feedback__request-title {
+    font-size: 30px;
+  }
+  .feedback__decor {
+    width: 223px;
+    height: 223px;
+    top: 40px;
+    right: -130px;
+  }
+}

@@ -1,0 +1,77 @@
+/* 700 (bold) */
+@font-face {
+  font-family: "Anglecia";
+  src: url("../fonts/AngleciaProDisplayBold.woff2") format("woff2"),
+    url("../fonts/AngleciaProDisplayBold.woff") format("woff"),
+    url("../fonts/AngleciaProDisplayBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Bold.woff2") format("woff2"),
+    url("../fonts/OpenSans-Bold.woff") format("woff"),
+    url("../fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+/* 600 SEMIBOLD */
+@font-face {
+  font-family: "Anglecia";
+  src: url("../fonts/AngleciaProDisplaySemiBold.woff2") format("woff2"),
+    url("../fonts/AngleciaProDisplaySemiBold.woff") format("woff"),
+    url("../fonts/AngleciaProDisplaySemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Semibold.woff2") format("woff2"),
+    url("../fonts/OpenSans-Semibold.woff") format("woff"),
+    url("../fonts/OpenSans-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+/* 500 (medium) */
+@font-face {
+  font-family: "Anglecia";
+  src: url("../fonts/AngleciaProDisplayMedium.woff2") format("woff2"),
+    url("../fonts/AngleciaProDisplayMedium.woff") format("woff"),
+    url("../fonts/AngleciaProDisplayMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+/* 400 (regular, normal) */
+@font-face {
+  font-family: "Anglecia";
+  src: url("../fonts/AngleciaProDisplayRegular.woff2") format("woff2"),
+    url("../fonts/AngleciaProDisplayRegular.woff") format("woff"),
+    url("../fonts/AngleciaProDisplayRegular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Regular.woff2") format("woff2"),
+    url("../fonts/OpenSans-Regular.woff") format("woff"),
+    url("../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* 300 LIGHT */
+@font-face {
+  font-family: "Anglecia";
+  src: url("../fonts/AngleciaProDisplayLight.woff2") format("woff2"),
+    url("../fonts/AngleciaProDisplayLight.woff") format("woff"),
+    url("../fonts/AngleciaProDisplayLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Light.woff2") format("woff2"),
+    url("../fonts/OpenSans-Light.woff") format("woff"),
+    url("../fonts/OpenSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}

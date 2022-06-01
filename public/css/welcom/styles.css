@@ -1,0 +1,158 @@
+/* хиро */
+.hero {
+  background: url("/assets/img/welcombg.png") no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  color: #fff;
+  padding-top: 229px;
+  padding-bottom: 207px;
+}
+.hero__title {
+  text-align: center;
+  color: #fff;
+}
+.hero__text {
+  font-family: "OpenSans-Regular";
+  font-size: 18px;
+  text-align: center;
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 40px;
+  text-align: center;
+}
+.hero__item {
+  display: flex;
+  justify-content: center;
+  width: 98%;
+}
+.hero__link {
+  display: inline-flex;
+  position: relative;
+  height: 42px;
+  font-size: 16px;
+  align-items: center;
+  margin-top: 123px;
+  letter-spacing: 3px;
+}
+/* видео */
+.video__content{
+  width: 100%;
+}
+.video {
+  padding-top: 68px;
+}
+.video__inner {
+  display: flex;
+  justify-content: space-between;
+}
+.video__item {
+  max-width: 660px;
+  width: 100%;
+  height: 315px;
+  position: relative;
+  float: left;
+  margin-right: 60px;
+  margin-bottom: 10px;
+}
+.video__item-play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video__text {
+  text-align: justify;
+  font-size: 16px;
+  font-family: "OpenSans";
+  color: #5f5839;
+}
+.video__text {
+  margin-bottom: 20px;
+}
+.video__text:last-of-type {
+  margin-bottom: 0;
+}
+.video__text:first-child {
+  margin-top: 0;
+}
+/* галлерея  */
+.gallery {
+  margin-top: 35px;
+  margin-bottom: 95px;
+}
+.gallery__items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.gallery__item-image {
+  height: 383px;
+}
+.gallery__item-image--bigz {
+  flex: 0 1 55.7%;
+}
+.gallery__item-image--smallz {
+  flex: 0 1 42%;
+}
+.gallery__item-image:nth-child(n + 3) {
+  margin-top: 36px;
+}
+@media (max-width: 1100px) {
+  /* видео */
+  .video__inner {
+    flex-wrap: wrap;
+  }
+  .video__item {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+  .video__content {
+    flex: 0 1 60.8%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  /* хиро */
+  .hero__title {
+    font-size: 49px;
+  }
+  .hero__text {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  /* галлерея */
+  .gallery__item-image {
+    height: 163px;
+  }
+  /* видео */
+  .video__content {
+    flex-basis: 100%;
+  }
+  .video__item {
+    padding-bottom: 0;
+    max-height: 314px;
+    float: unset;
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  .video__item-play {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .video__text {
+    font-size: 12px;
+  }
+}
+@media (max-width: 374px) {
+  /* хиро */
+  .hero__title {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,116 @@
+body {
+  background: #f8f8f8;
+}
+.delivery {
+  margin-top: 55px;
+  margin-bottom: 127px;
+}
+.delivery h1 {
+  text-align: center;
+}
+.delivery .items {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 91px;
+}
+.delivery .items .item {
+  max-width: 686px;
+  width: 100%;
+  border: 1px solid #e2dac9;
+  border-radius: 7px;
+  padding: 35px 46px 58px;
+  display: flex;
+  margin-right: 10px;
+}
+.delivery .items .item:last-of-type {
+  margin-right: 0;
+}
+.delivery .items .item .rightBlock {
+  margin-left: 20px;
+}
+.delivery .items .item .title {
+  font-size: 21px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #5f5839;
+  font-family: "Anglecia";
+  font-weight: 500;
+  max-width: 294px;
+}
+.delivery .items .item .price {
+  margin-top: 23px;
+  font-size: 37px;
+  line-height: 47px;
+  color: #c8a98d;
+  font-family: "Anglecia";
+  font-weight: 600;
+}
+.delivery .items .item .notation {
+  font-size: 16px;
+  line-height: 22px;
+  color: #828282;
+  font-family: "OpenSans";
+  margin-top: 5px;
+}
+.delivery .items .item .text {
+  margin-top: 26px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #828282;
+}
+.delivery .items .item .text p {
+  margin-bottom: 20px;
+}
+.delivery .items .item .text p:last-of-type {
+  margin-bottom: 0;
+}
+.delivery .warning {
+  margin-top: 52px;
+  font-size: 18px;
+  line-height: 31px;
+  color: #5f5839;
+  font-family: "OpenSans";
+}
+.delivery .warning span {
+  font-family: "OpenSans";
+  font-weight: 700;
+}
+@media (max-width: 1000px) {
+  .delivery .items {
+    flex-direction: column;
+  }
+  .delivery .items .item {
+    margin: 0 auto 30px auto;
+  }
+  .delivery .items .item:last-of-type {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  .delivery h1 {
+    font-size: 49px;
+    line-height: 61px;
+  }
+  .delivery .warning {
+    font-size: 14px;
+    line-height: 26px;
+  }
+  .delivery .items .item .title {
+    font-size: 19px;
+    line-height: 24px;
+  }
+  .delivery .items .item .notation {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .delivery .items .item .text {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 475px) {
+  .delivery .items .item {
+    padding: 45px 20px 66px;
+  }
+}

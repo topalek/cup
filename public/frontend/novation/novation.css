@@ -1,0 +1,52 @@
+.nova-slider{
+    position: relative;
+    overflow: hidden;
+}
+.nova-slider:after{
+    content: ' ';
+    width: 540px;
+    height:540px;
+    background:#F2EEE5;
+    border-radius: 50%;
+    position: absolute;
+    right:2%;
+    top:0;
+}
+
+.nova-slider__slide{
+    height:655px;
+    position: relative;
+    z-index:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nova-slider__slide .title{
+    font-family: "Anglecia";
+    font-size: 79px;
+    font-weight:500;
+    color:#5F5839;
+    z-index:2;
+    margin-left:24%;
+    margin-bottom: 40px;
+}
+.nova-slider__slide .text{
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    color:#5F5839;
+    max-width: 450px;
+    text-align: justify;
+    z-index: 2;
+    align-self: flex-start;
+    
+}
+.nova-slider__slide .img{
+    right:3%;
+    bottom:0;
+    position: absolute;
+    width:100%;
+    max-width: 750px;
+    height:auto;
+    z-index: 3;
+}

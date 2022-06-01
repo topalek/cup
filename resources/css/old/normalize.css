@@ -1,0 +1,329 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.error {
+  position: relative;
+}
+.error .image-phone {
+  max-width: 315px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.error .image-shrimp {
+  max-width: 345px;
+  width: 100%;
+  left: 10%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+.error-title {
+  font-size: 96px;
+  text-transform: uppercase;
+}
+.error__box {
+  display: flex;
+  justify-content: center;
+}
+.error__inner {
+  padding-top: 179px;
+  padding-bottom: 140px;
+  position: relative;
+}
+.error-notfound {
+  font-weight: 500;
+  font-size: 38px;
+  text-transform: uppercase;
+  font-family: "Anglecia";
+  color: #c8a98d;
+}
+.error__content {
+  margin-top: 59px;
+  color: #626262;
+  font-family: "OpenSans";
+  font-size: 14px;
+}
+.error__content-title {
+  font-weight: 700;
+}
+.error__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+.error-text {
+  font-weight: 600;
+  font-size: 14px;
+  color: #626262;
+  margin-top: 53px;
+}
+.error-link {
+  color: #c8a98d;
+  text-decoration-line: underline;
+  font-weight: normal;
+  transition: ease-in-out 0.25s;
+  -webkit-transition: ease-in-out 0.25s;
+  -moz-transition: ease-in-out 0.25s;
+  -ms-transition: ease-in-out 0.25s;
+  -o-transition: ease-in-out 0.25s;
+}
+.error-link:hover {
+  color: #5f5839;
+}
+.error .buttons {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+.error .buttons-link {
+  width: 240px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #c8a98d;
+  border-radius: 71px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c8a98d;
+  font-family: "Anglecia";
+  font-weight: bold;
+  margin-right: 15px;
+  transition: ease-in-out 0.25s;
+  -webkit-transition: ease-in-out 0.25s;
+  -moz-transition: ease-in-out 0.25s;
+  -ms-transition: ease-in-out 0.25s;
+  -o-transition: ease-in-out 0.25s;
+}
+.error .buttons-link:hover {
+  border: 2px solid #5f5839;
+  color: #5f5839;
+}
+.error .buttons-link:last-of-type {
+  margin-right: 0;
+}
+@media (max-width: 1560px) {
+  .error .image-phone {
+      left: -100px;
+  }
+  .error .image-shrimp {
+      left: 0;
+  }
+}
+@media (max-width: 1350px) {
+  .error-image {
+      left: -200px;
+  }
+  .error-title {
+      font-size: 58px;
+  }
+  .error-notfound {
+      font-size: 30px;
+  }
+}
+@media (max-width: 1280px) {
+  .error-image {
+      left: -250px;
+  }
+  .error__box {
+      justify-content: flex-end;
+  }
+}
+@media (max-width: 1046px) {
+  .error .buttons {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 35px;
+  }
+  .error__box {
+      justify-content: center;
+      margin-left: 50px;
+  }
+  .error .buttons-link {
+      margin-right: 0;
+      margin-bottom: 18px;
+  }
+  .error .buttons-link:last-of-type {
+      margin-bottom: 0;
+  }
+}
+@media (max-width: 900px) {
+  .error .image-shrimp {
+      left: -80px;
+  }
+}
+@media (max-width: 768px) {
+  .error-image {
+      left: -250px;
+  }
+  .error__content,
+  .error-text {
+      padding-left: 50px;
+  }
+  .error-title {
+      font-size: 49px;
+  }
+  .error-notfound {
+      font-size: 20px;
+  }
+  .error__content {
+      font-size: 12px;
+  }
+  .error .buttons {
+      margin-left: 50px;
+  }
+  .error .buttons-link {
+      width: 197px;
+      height: 44px;
+  }
+  .error .image-shrimp {
+      left: -80px;
+      top: unset;
+      bottom: 0;
+      transform: none;
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+  }
+}
+@media (max-width: 560px) {
+  .error__box {
+      justify-content: flex-end;
+  }
+  .error .buttons-link {
+      margin-left: auto;
+  }
+  .error-image {
+      display: none;
+  }
+  .error-image--mobile {
+      display: block;
+      max-width: 347px;
+      left: -80px;
+  }
+  .error .image-phone {
+      left: -200px;
+  }
+  .error .image-shrimp {
+      max-width: 197px;
+      height: 352px;
+      left: 0;
+      bottom: 100px;
+  }
+}
+@media (max-width: 470px) {
+  .error-title {
+      font-size: 43px;
+  }
+  .error-title {
+      text-align: end;
+  }
+  .error-notfound {
+      text-align: end;
+  }
+  .error__list {
+      text-align: end;
+  }
+  .error__inner {
+      padding-top: 90px;
+  }
+  .error__content,
+  .error-text {
+      padding-left: 0;
+  }
+  .error .image-phone {
+      left: -250px;
+  }
+  .error__box {
+      margin-left: 0;
+  }
+}
+@media (max-width: 374px) {
+  .error-title {
+      font-size: 30px;
+  }
+  .error .image-shrimp {
+      left: -40px;
+  }
+}

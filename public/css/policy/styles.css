@@ -1,0 +1,20 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.policy {
+  padding-top: 150px;
+}
+.policy__text {
+  font-size: 16px;
+  line-height: 21px;
+  font-family: "OpenSans";
+  margin: 30px 0;
+}
+.policy__text p {
+  margin-bottom: 20px;
+}
+.policy__text p:last-of-type {
+  margin-bottom: 0;
+}

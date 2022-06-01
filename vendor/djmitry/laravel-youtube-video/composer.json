@@ -1,0 +1,25 @@
+{
+    "name": "djmitry/laravel-youtube-video",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Zagainov",
+            "email": "d.i.ma.92@mail.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Djmitry\\Youtube\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Djmitry\\Youtube\\YoutubeServiceProvider"
+            ]
+        }
+    }
+}

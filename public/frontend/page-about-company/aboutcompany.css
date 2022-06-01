@@ -1,0 +1,485 @@
+/* компании */
+.hero {
+    color: #5f5839;
+    padding-top: 176px;
+}
+.hero__title {
+    text-align: center;
+}
+.hero__text {
+    font-size: 16px;
+    font-family: "OpenSans";
+    width: 57%;
+    margin: 0 auto;
+    margin-top: 46px;
+    text-align: center;
+}
+.hero__item {
+    margin-top: 46px;
+    display: flex;
+    justify-content: center;
+}
+.hero__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    letter-spacing: 3px;
+}
+.hero .link--arrow-black::after {
+    right: -36px;
+}
+/* комманда */
+.command {
+    margin-top: 60px;
+}
+.command__items {
+    display: flex;
+    justify-content: space-between;
+}
+.command__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0 1 30%;
+}
+.command__item-title {
+    font-size: 48px;
+    color: #5f5839;
+}
+.command__item-text {
+    font-size: 18px;
+    color: #4f4f4f;
+    /* text-align: justify; */
+    font-family: "OpenSans";
+    margin-top: 25px;
+}
+.command__image {
+    width: 515px;
+    height: 461px;
+}
+/* гарантия  */
+.garant {
+    margin-top: 76px;
+}
+.garant__title {
+    text-align: center;
+}
+.garant__items {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+.garant__item {
+    flex: 0 1 24.5%;
+    color: #fff;
+    font-family: "Anglecia";
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+.garant__item::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(
+        0deg,
+        rgba(56, 43, 31, 0.63),
+        rgba(56, 43, 31, 0.63)
+    );
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: ease-in-out 0.25s;
+    -webkit-transition: ease-in-out 0.25s;
+    -moz-transition: ease-in-out 0.25s;
+    -ms-transition: ease-in-out 0.25s;
+    -o-transition: ease-in-out 0.25s;
+}
+.garant__item:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+.garant__item-heght3:hover::after {
+    display: none;
+}
+
+.garant__item-content {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+.garant__item-content::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(
+        0deg,
+        rgba(56, 43, 31, 0.63),
+        rgba(56, 43, 31, 0.63)
+    );
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: ease-in-out 0.25s;
+    -webkit-transition: ease-in-out 0.25s;
+    -moz-transition: ease-in-out 0.25s;
+    -ms-transition: ease-in-out 0.25s;
+    -o-transition: ease-in-out 0.25s;
+}
+.garant__item-content:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+.garant__item-heght1 {
+    height: 384px;
+    margin-top: 21px;
+}
+.garant__item-heght2 {
+    height: 516px;
+    margin-top: 51px;
+}
+.garant__item-heght3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 613px;
+}
+.garant__item-heght4 {
+    height: 473px;
+    margin-top: 51px;
+}
+.garant__item-content--size1 {
+    height: 285px;
+}
+.garant__item-content--size2 {
+    height: 312px;
+}
+.garant__item-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.garant__item-text {
+    font-size: 27px;
+    padding: 0 126px 55px 41px;
+    /* width: 182px; */
+    position: relative;
+    z-index: 2;
+}
+/* повара */
+.person-chef {
+    background: rgba(226, 218, 201, 0.8);
+    color: #4f4f4f;
+    padding-bottom: 38px;
+    margin-top: 140px;
+}
+.person-chef__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+.person-chef__item {
+    display: flex;
+}
+.person-chef__item-image {
+    height: 235px;
+    width: 235px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.person-chef__item-box {
+    margin-top: -55px;
+}
+.person-chef__item-text {
+    font-size: 18px;
+    margin-left: 32px;
+    margin-top: 58px;
+    width: 285px;
+}
+.person-chef__item-name {
+    font-family: "Anglecia";
+    font-size: 24px;
+    text-align: center;
+}
+.person-chef__item-descript {
+    text-align: center;
+    font-family: "OpenSans";
+    font-size: 18px;
+}
+/* ценности */
+.treas {
+    margin-bottom: 100px;
+    position: relative;
+}
+.treas__items {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.treas__title {
+    text-align: center;
+}
+
+.treas__item__image {
+    width: 28px;
+    height: 28px;
+}
+.treas__item-title {
+    margin-top: 24px;
+    font-size: 16px;
+    font-family: "OpenSans";
+    color: #5f5839;
+    font-weight: 700;
+}
+.treas__item-text {
+    color: #5f5839;
+    font-family: "OpenSans";
+    font-size: 16px;
+}
+.treas__item--mt1 {
+    margin-top: 58px;
+}
+.treas__item--mt2 {
+    margin-top: 4px;
+}
+.treas__item--mt3 {
+    margin-top: 56px;
+}
+.treas__item--mt4 {
+    margin-top: 2px;
+}
+.treas__line {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 72%;
+    display: block;
+}
+.treas__linemob {
+    display: none;
+    position: absolute;
+    top: 0;
+    /* left: 15%; */
+    /* width: 72%; */
+}
+.feedback-about .feedback__request-title {
+    padding-top: 0;
+    max-width: 380px;
+    line-height: 69px;
+}
+.feedback-about .feedback__description {
+    font-size: 16px;
+    line-height: 22px;
+    font-family: "OpenSans";
+    margin-top: 38px;
+}
+.feedback-about .feedback__inputs {
+    margin-top: 71px;
+}
+@media (max-width: 1200px) {
+    /* гарант */
+    .garant__items {
+        flex-wrap: wrap;
+    }
+    .garant__item {
+        flex: 0 1 48%;
+    }
+    .garant__item-heght1,
+    .garant__item-heght2,
+    .garant__item-heght3,
+    .garant__item-heght4 {
+        margin-top: 0;
+    }
+    .garant__item:nth-child(n + 3) {
+        margin-top: 20px;
+    }
+    .garant__item-heght1,
+    .garant__item-heght2 {
+        height: 300px;
+    }
+    .garant__item-heght3 {
+        flex-direction: row;
+        height: 300px;
+        flex: 0 1 100%;
+    }
+    .garant__item-content--size1,
+    .garant__item-content--size2 {
+        height: 285px;
+    }
+    .garant__item-content {
+        flex: 0 1 48%;
+    }
+    .garant__item-heght4 {
+        flex: 0 1 100%;
+        height: 275px;
+    }
+    /* ценности */
+    .treas__line {
+        display: none;
+    }
+    .treas__linemob {
+        display: block;
+        position: absolute;
+        top: 23px;
+        left: 40%;
+        width: auto;
+    }
+    .treas__items {
+        flex-wrap: wrap;
+    }
+    .treas__item {
+        flex: 0 1 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width: 1170px) {
+    /* команда */
+    .command__items {
+        flex-wrap: wrap;
+        position: relative;
+        padding-bottom: 310px;
+    }
+    .command__item {
+        flex: 0 1 45%;
+    }
+    .command__image {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -80px;
+        margin: 0 auto;
+        z-index: -1;
+    }
+    /* повара */
+    .person-chef {
+        margin-top: 100px;
+    }
+    .person-chef__item-text {
+        width: 100%;
+    }
+    .person-chef__items {
+        padding: 0;
+    }
+    .person-chef__item:nth-child(n + 2) {
+        margin-top: 100px;
+    }
+}
+@media (max-width: 1024px) {
+    .feedback-about .feedback__request-title {
+        max-width: none;
+    }
+}
+@media (max-width: 768px) {
+    /* команда*/
+    .command__item-title {
+        font-size: 28px;
+    }
+    .command__image {
+        width: 284px;
+        height: 254px;
+        bottom: -20px;
+    }
+    .command__items {
+        padding-bottom: 190px;
+    }
+    .command__item-text {
+        font-size: 12px;
+    }
+    /* повара */
+    .person-chef__item-image {
+        width: 180px;
+    }
+    /* херо блок */
+    .hero__text {
+        width: 100%;
+    }
+    /* гарант */
+    .garant__item-heght1,
+    .garant__item-heght2 {
+        height: 211px;
+    }
+    .garant__item-heght3 {
+        height: 129px;
+    }
+    .garant__item-content--size1,
+    .garant__item-content--size2 {
+        height: 129px;
+    }
+    .garant__item-heght4 {
+        height: 159px;
+    }
+    .garant__item-text {
+        font-size: 22px;
+        padding: 0 15px 15px 41px;
+    }
+    /* ценности */
+    .treas__linemob {
+        width: 122px;
+    }
+}
+@media (max-width: 584px) {
+    .treas__item {
+        align-items: flex-start;
+    }
+    .treas__linemob {
+        left: 28%;
+        top: 63px;
+        width: 107px;
+    }
+}
+@media (max-width: 475px) {
+    /* гарант */
+    .garant__item-text {
+        padding: 0 15px 15px 15px;
+    }
+}
+@media (max-width: 455px) {
+    /* повара */
+    .person-chef__item-text {
+        font-size: 14px;
+    }
+}
+@media (max-width: 425px) {
+    /* повара */
+    .hero {
+        padding-top: 130px;
+    }
+    .person-chef__item {
+        flex-wrap: wrap;
+    }
+    .person-chef__item-text {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .person-chef__item-box {
+        margin: -55px auto 0;
+    }
+    /* херо блок */
+    .hero__text {
+        font-size: 12px;
+    }
+    /* ценности */
+    .treas__item-title,
+    .treas__item-text {
+        font-size: 13px;
+    }
+}
+@media (max-width: 374px) {
+    /* ценности */
+    .treas__linemob {
+        display: none;
+    }
+}

@@ -1,0 +1,108 @@
+body {
+    background: #f8f8f8;
+}
+
+.personalArea {
+    margin-top: 55px;
+    margin-bottom: 60px;
+}
+
+.personalArea h1 {
+    text-align: center;
+}
+
+.personalArea .items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 56px;
+}
+
+.personalArea .items .item {
+    max-width: 512px;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid #e2dac9;
+    border-radius: 7px;
+    overflow: hidden;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    margin-bottom: 42px;
+    display: flex;
+}
+
+.personalArea .items .item.var1 .leftBlock {
+    font-size: 25px;
+    line-height: 30px;
+    color: #5f5839;
+    font-family: "Anglecia";
+    font-weight: 500;
+    padding: 45px 67px 45px 40px;
+}
+
+.personalArea .items .item.var1 .rightBlock {
+    max-width: 231px;
+    width: 100%;
+    height: auto;
+}
+
+.personalArea .items .item.var2 .leftBlock {
+    max-width: 231px;
+    width: 100%;
+    height: auto;
+}
+
+.personalArea .items .item.var2 .rightBlock {
+    font-size: 25px;
+    line-height: 30px;
+    color: #5f5839;
+    font-family: "Anglecia";
+    font-weight: 500;
+    padding: 45px 67px 45px 40px;
+}
+
+@media (max-width: 550px) {
+    .personalArea .items .item.var1 .leftBlock {
+        padding: 45px 20px 45px 20px;
+        width: 225px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .personalArea .items .item.var2 .rightBlock {
+        padding: 45px 20px 45px 20px;
+        width: 225px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .personalArea .items .item.var2 .leftBlock {
+        max-width: none;
+        width: auto;
+    }
+    .personalArea .items .item.var1 .rightBlock {
+        max-width: none;
+        width: auto;
+    }
+}
+
+@media (max-width: 374px) {
+    .personalArea .items .item.var1 {
+        flex-direction: column-reverse;
+    }
+    .personalArea .items .item.var1 .rightBlock {
+        height: 150px;
+    }
+    .personalArea .items .item.var1 .leftBlock {
+        width: 100%;
+    }
+    .personalArea .items .item.var2 {
+        flex-direction: column;
+    }
+    .personalArea .items .item.var2 .leftBlock {
+        height: 150px;
+    }
+    .personalArea .items .item.var2 .rightBlock {
+        width: 100%;
+    }
+}
