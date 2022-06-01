@@ -725,6 +725,7 @@ class ComposerStaticInitdcd8308c67b3edd09780b91df21cb47d
         'App\\Orchid\\Layouts\\FAQListLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/FAQListLayout.php',
         'App\\Orchid\\Layouts\\FormatLayoutsScreen' => __DIR__ . '/../..' . '/app/Orchid/Layouts/FormatLayoutsScreen.php',
         'App\\Orchid\\Layouts\\GarKachLayoutsScreen' => __DIR__ . '/../..' . '/app/Orchid/Layouts/GarKachLayoutsScreen.php',
+        'App\\Orchid\\Layouts\\NoticeListLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/NoticeListLayout.php',
         'App\\Orchid\\Layouts\\OrderListLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/OrderListLayout.php',
         'App\\Orchid\\Layouts\\OurpLayoutsScreen' => __DIR__ . '/../..' . '/app/Orchid/Layouts/OurpLayoutsScreen.php',
         'App\\Orchid\\Layouts\\PortfolioListLayout' => __DIR__ . '/../..' . '/app/Orchid/Layouts/PortfolioListLayout.php',

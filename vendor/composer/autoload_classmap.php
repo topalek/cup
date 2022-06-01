@@ -77,6 +77,7 @@ return array(
     'App\\Orchid\\Layouts\\FAQListLayout' => $baseDir . '/app/Orchid/Layouts/FAQListLayout.php',
     'App\\Orchid\\Layouts\\FormatLayoutsScreen' => $baseDir . '/app/Orchid/Layouts/FormatLayoutsScreen.php',
     'App\\Orchid\\Layouts\\GarKachLayoutsScreen' => $baseDir . '/app/Orchid/Layouts/GarKachLayoutsScreen.php',
+    'App\\Orchid\\Layouts\\NoticeListLayout' => $baseDir . '/app/Orchid/Layouts/NoticeListLayout.php',
     'App\\Orchid\\Layouts\\OrderListLayout' => $baseDir . '/app/Orchid/Layouts/OrderListLayout.php',
     'App\\Orchid\\Layouts\\OurpLayoutsScreen' => $baseDir . '/app/Orchid/Layouts/OurpLayoutsScreen.php',
     'App\\Orchid\\Layouts\\PortfolioListLayout' => $baseDir . '/app/Orchid/Layouts/PortfolioListLayout.php',

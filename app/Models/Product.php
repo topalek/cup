@@ -85,13 +85,40 @@ class Product extends Model
         return $this->hasMany(Attachment::class)->where('group','photos');
     }
 
-    public function categoryel(){
-      return $this->belongsToMany(Category::class);
-      //return $this->belongsToMany('App\Category','category_product','product_id','category_id');
+    public function categoryel()
+    {
+        return $this->belongsToMany(Category::class);
+        //return $this->belongsToMany('App\Category','category_product','product_id','category_id');
     }
 
-    public function prodgr(){
-      return $this->belongsToMany(Productgr::class);
+    public function prodgr()
+    {
+        return $this->belongsToMany(Productgr::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_products', 'parent_id', 'product_id');
+    }
+
+    public function parents()
+    {
+        return $this->belongsToMany(Product::class, 'product_products', 'product_id', 'parent_id');
+    }
+
+    public function getList(bool $includeSelf = false): array
+    {
+        $list = Product::whereNotIn('id', [$this->id])->pluck('name', 'id')->all();
+        if ($includeSelf) {
+            $list[$this->id] = $this->name;
+        }
+        ksort($list);
+        return $list;
+    }
+
+    public function scopeNotSelf(Builder $query, $selfId)
+    {
+        return $query->whereNotIn('id', [$selfId]);
     }
 
 }

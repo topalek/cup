@@ -7,9 +7,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\CheckBox;
-use Orchid\Screen\Fields\Cropper;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Select;
@@ -24,10 +23,12 @@ class ProductEditScreen extends Screen
     public $name = 'Товар';
     public $description = 'Shop product';
     public $exists = false;
+    public $product = false;
 
     public function query(Product $product): array
     {
         $this->exists = $product->exists;
+        $this->product = $product;
         if($this->exists){
             $this->name = 'Изменить товар';
         }
@@ -61,25 +62,21 @@ class ProductEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('product.name')
-                    ->title('Название товара')
-                    ->placeholder('Название товара')
-                    ->required(),
-                /*Relation::make('product.category_id')
-                    ->fromModel(Category::class, 'name')
-                    ->title('Категория')
-                    ->required(),*/
-                /*Relation::make('product.category_id')
-                    ->fromModel(Category::class, 'name')
-                    ->title('Категория')
-                    ->required(),*/
-
+                Group::make([
+                    Input::make('product.name')
+                        ->title('Название товара')
+                        ->placeholder('Название товара')
+                        ->required(),
+                    Relation::make('product.products.')
+                        ->fromModel(Product::class, 'name')
+                        ->applyScope('notSelf', $this->product->id)
+                        ->multiple()
+                        ->title('Товары'),
+                ]),
                 Select::make('product.categoryel.')
                     ->fromModel(Category::class, 'name')
                     ->multiple()
                     ->title('Категории'),
-                    //->required(),
-                
                 Input::make('product.url')
                     ->title('Ссылка на товар')
                     ->required(),
@@ -96,12 +93,6 @@ class ProductEditScreen extends Screen
                       'numericInput' => true
                      ])
                     ->required(),
-                /*Cropper::make('product.hero')
-                    ->title('Превью изображение для каталога')
-                    ->maxCanvas(400)
-                    ->maxWidth(400)
-                    ->maxHeight(400)
-                    ->targetId(),*/
                 Upload::make('product.attachment')
                     ->title('Фотографии карусели')
                     ->groups('photos'),
@@ -151,10 +142,11 @@ class ProductEditScreen extends Screen
     public function createOrUpdate(Product $product, Request $request)
     {
         $product->fill($request->get('product'))->save();
+        $product->products()->sync($request->input('product.products'));
         Alert::info('You have successfully created.');
 
-        
-      // Удаление новой записи
+
+        // Удаление новой записи
       $catProdIds = array_filter($request->input('product.categoryel', []), function ($v, $k) {
           return filter_var($v, FILTER_VALIDATE_INT) !== false;
       }, ARRAY_FILTER_USE_BOTH);
@@ -174,7 +166,7 @@ class ProductEditScreen extends Screen
           }
           $product->categoryel()->saveMany($CatProdArr);
       }
-     
+
 
         $product->attachment()->syncWithoutDetaching(
             $request->input('product.attachment', [])
