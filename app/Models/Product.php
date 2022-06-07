@@ -98,12 +98,12 @@ class Product extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_products', 'parent_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'product_products', 'parent_id', 'product_id')->with('hero');
     }
 
     public function parents()
     {
-        return $this->belongsToMany(Product::class, 'product_products', 'product_id', 'parent_id');
+        return $this->belongsToMany(Product::class, 'product_products', 'product_id', 'parent_id')->with('hero');
     }
 
     public function getList(bool $includeSelf = false): array

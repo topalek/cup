@@ -7,6 +7,7 @@
 
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
+
 //
 //Route::resources([
 //    'faq' => FAQController::class,
@@ -29,10 +30,12 @@ Route::prefix('auth')->group(function () {
      });
 });
 
- Route::group(['middleware' => 'auth:api'], function () {
-     // Users
-     Route::get('users', 'UserController@index')->middleware('isAdmin');
-     Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
- });
+Route::group(['middleware' => 'auth:api'], function () {
+    // Users
+    Route::get('users', 'UserController@index')->middleware('isAdmin');
+    Route::get('users/{id}', 'UserController@show')->middleware('isAdminOrSelf');
+});
 
- Route::get('menuprod/{url}', [FrontendController::class, 'renderMenuProductAPI']);
+Route::get('menuprod/{url}', [FrontendController::class, 'renderMenuProductAPI']);
+Route::get('replace-product/{id}', [FrontendController::class, 'replaceProduct']);
+Route::get('add-product/{search}', [FrontendController::class, 'addProduct']);

@@ -368,21 +368,6 @@ body {
   position: relative;
   margin-top: 40px;
 }
-.data__wrap .input-group.has-error input,.delivery__wrap .input-group.has-error input{
-    border: 1px solid #b60101;
-}
-.data__wrap .input-group.has-error label,
-.data__wrap .input-group.has-error .error-text,
-.delivery__wrap .input-group.has-error label,
-.delivery__wrap .input-group.has-error .error-text
-{
-    color: #b60101;
-}
-.input-group.has-error .error-text{
-    display: block;
-    margin-top: 3px;
-    margin-left: 16px;
-}
 .data__wrap .input-group input {
   width: 100%;
   height: 65px;

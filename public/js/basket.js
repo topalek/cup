@@ -9,8 +9,6 @@ $(document).on("click", ".data-select", function () {
 $(document).on("click", ".data-select__item", function () {
   var text = $(this).text();
   $(this).parents(".data-select").find(".top").text(text);
-    $(this).parents('.data-select').find('.data-select__input').val(text)
-
 }); // new js
 
 $(".basket__row-button").on("click", function () {

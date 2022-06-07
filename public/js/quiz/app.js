@@ -273,7 +273,7 @@ axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_m
 module.exports = axios;
 
 // Allow use of default import syntax in TypeScript
-module.exports.default = axios;
+module.exports["default"] = axios;
 
 
 /***/ }),
@@ -995,17 +995,18 @@ module.exports = function transformData(data, headers, fns) {
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
+            "use strict";
+            /* provided dependency */
+            var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 
-var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./node_modules/axios/lib/helpers/normalizeHeaderName.js");
-var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "./node_modules/axios/lib/core/enhanceError.js");
+            var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
+            var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./node_modules/axios/lib/helpers/normalizeHeaderName.js");
+            var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "./node_modules/axios/lib/core/enhanceError.js");
 
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
+            var DEFAULT_CONTENT_TYPE = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
 
 function setContentTypeIfUnset(headers, value) {
   if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
@@ -2054,17 +2055,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/axios/package.json":
-/*!*****************************************!*\
-  !*** ./node_modules/axios/package.json ***!
-  \*****************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/","#USER"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"/home/umaxdev01/www/cup","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=script&lang=js& ***!
@@ -2532,16 +2522,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.render,
-  _App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
+            var component = (0, _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+                _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+                _App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.render,
+                _App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+                false,
+                null,
+                null,
+                null
+            )
 
 /* hot reload */
 if (false) { var api; }
@@ -2556,15 +2545,20 @@ component.options.__file = "resources/js/quiz/App.vue"
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export */
+            __webpack_require__.d(__webpack_exports__, {
+                /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+                /* harmony export */
+            });
+            /* harmony import */
+            var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=script&lang=js&");
+            /* harmony default export */
+            const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
-/***/ }),
+            /***/
+        }),
 
 /***/ "./resources/js/quiz/App.vue?vue&type=template&id=1d4de376&":
 /*!******************************************************************!*\
@@ -2595,174 +2589,174 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "quiz", attrs: { id: "quiz" } }, [
-    _c("div", { staticClass: "container" }, [
-      _c("h2", [_vm._v("Рассчитать стоимость мероприятия")]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          staticClass: "quiz__wrap",
-          attrs: { enctype: "multipart/form-data" },
-          on: { submit: _vm.formSubmit }
-        },
+            var render = function () {
+                var _vm = this
+                var _h = _vm.$createElement
+                var _c = _vm._self._c || _h
+                return _c("section", {staticClass: "quiz", attrs: {id: "quiz"}}, [
+                    _c("div", {staticClass: "container"}, [
+                        _c("h2", [_vm._v("Рассчитать стоимость мероприятия")]),
+                        _vm._v(" "),
+                        _c(
+                            "form",
+                            {
+                                staticClass: "quiz__wrap",
+                                attrs: {enctype: "multipart/form-data"},
+                                on: {submit: _vm.formSubmit},
+                            },
         [
           _c("div", { staticClass: "quiz__image" }, [
-            _c("img", { attrs: { src: _vm.quizImage, alt: "" } })
+              _c("img", {attrs: {src: _vm.quizImage, alt: ""}}),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "quiz__info" }, [
             _c("div", { staticClass: "quiz__info-top" }, [
-              _c("div", { staticClass: "quiz__info-title" }, [
-                _vm._v(_vm._s(_vm.title))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "quiz__info-steps" }, [
-                _c("span", [_vm._v("0" + _vm._s(_vm.current))]),
-                _vm._v("/0" + _vm._s(_vm.total) + "\n          ")
-              ])
+                _c("div", {staticClass: "quiz__info-title"}, [
+                    _vm._v(_vm._s(_vm.title)),
+                ]),
+                _vm._v(" "),
+                _c("div", {staticClass: "quiz__info-steps"}, [
+                    _c("span", [_vm._v("0" + _vm._s(_vm.current))]),
+                    _vm._v("/0" + _vm._s(_vm.total) + "\n          "),
+                ]),
             ]),
             _vm._v("\n        " + _vm._s(_vm.output) + "\n        "),
             _c(
               "div",
-              {
-                staticClass: "quiz__item quiz__item--price",
-                class: _vm.current === 1 ? "active" : ""
-              },
-              _vm._l(_vm.prices, function(item, i) {
-                return _c("div", { key: i, staticClass: "quiz__price" }, [
-                  _c("input", {
-                    attrs: { type: "radio", id: item.id, name: "price" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: item.for } }, [
-                    _vm._v(_vm._s(item.title))
-                  ])
-                ])
-              }),
+                {
+                    staticClass: "quiz__item quiz__item--price",
+                    class: _vm.current === 1 ? "active" : "",
+                },
+                _vm._l(_vm.prices, function (item, i) {
+                    return _c("div", {key: i, staticClass: "quiz__price"}, [
+                        _c("input", {
+                            attrs: {type: "radio", id: item.id, name: "price"},
+                        }),
+                        _vm._v(" "),
+                        _c("label", {attrs: {for: item.for}}, [
+                            _vm._v(_vm._s(item.title)),
+                        ]),
+                    ])
+                }),
               0
             ),
             _vm._v(" "),
             _c(
               "div",
-              {
-                staticClass: "quiz__item",
-                class: _vm.current === 2 ? "active" : ""
-              },
+                {
+                    staticClass: "quiz__item",
+                    class: _vm.current === 2 ? "active" : "",
+                },
               [
                 _c("div", { staticClass: "quiz__item-group" }, [
                   _c("input", {
                     directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.adults,
-                        expression: "adults"
-                      }
+                        {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.adults,
+                            expression: "adults",
+                        },
                     ],
-                    staticClass: "test",
-                    attrs: { type: "text", id: "adults_count" },
-                    domProps: { value: _vm.adults },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.adults = $event.target.value
-                      }
-                    }
+                      staticClass: "test",
+                      attrs: {type: "text", id: "adults_count"},
+                      domProps: {value: _vm.adults},
+                      on: {
+                          input: function ($event) {
+                              if ($event.target.composing) {
+                                  return
+                              }
+                              _vm.adults = $event.target.value
+                          },
+                      },
                   }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "adults_count" } }, [
-                    _vm._v("взрослые")
-                  ])
+                    _vm._v(" "),
+                    _c("label", {attrs: {for: "adults_count"}}, [
+                        _vm._v("взрослые"),
+                    ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "quiz__item-group" }, [
                   _c("input", {
                     directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.kids,
-                        expression: "kids"
-                      }
+                        {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.kids,
+                            expression: "kids",
+                        },
                     ],
-                    attrs: { type: "text", id: "child_count" },
-                    domProps: { value: _vm.kids },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.kids = $event.target.value
-                      }
-                    }
+                      attrs: {type: "text", id: "child_count"},
+                      domProps: {value: _vm.kids},
+                      on: {
+                          input: function ($event) {
+                              if ($event.target.composing) {
+                                  return
+                              }
+                              _vm.kids = $event.target.value
+                          },
+                      },
                   }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "child_count" } }, [
-                    _vm._v("Дети")
-                  ])
+                    _vm._v(" "),
+                    _c("label", {attrs: {for: "child_count"}}, [
+                        _vm._v("Дети"),
+                    ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "quiz__item-group" }, [
                   _c("input", {
                     directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.datebegin,
-                        expression: "datebegin"
-                      }
+                        {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.datebegin,
+                            expression: "datebegin",
+                        },
                     ],
-                    attrs: { type: "date", id: "date" },
-                    domProps: { value: _vm.datebegin },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.datebegin = $event.target.value
-                      }
-                    }
+                      attrs: {type: "date", id: "date"},
+                      domProps: {value: _vm.datebegin},
+                      on: {
+                          input: function ($event) {
+                              if ($event.target.composing) {
+                                  return
+                              }
+                              _vm.datebegin = $event.target.value
+                          },
+                      },
                   }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "date" } }, [
-                    _vm._v("дата проведения")
-                  ])
-                ])
+                    _vm._v(" "),
+                    _c("label", {attrs: {for: "date"}}, [
+                        _vm._v("дата проведения"),
+                    ]),
+                ]),
               ]
             ),
             _vm._v(" "),
             _c(
               "div",
-              {
-                staticClass: "quiz__item",
-                class: _vm.current === 3 ? "active" : ""
-              },
-              [
-                _c("div", { staticClass: "quiz__item-total" }, [
-                  _vm._v(_vm._s(_vm.priceTotal) + " рублей")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "quiz__item-notation" }, [
-                  _vm._v(
-                    "\n            Стоимость рассчитывается примерно, уточняется при расчёте\n            коммерческого предложения в зависимости от меню и\n            ассортимента.\n          "
-                  )
-                ])
-              ]
+                {
+                    staticClass: "quiz__item",
+                    class: _vm.current === 3 ? "active" : "",
+                },
+                [
+                    _c("div", {staticClass: "quiz__item-total"}, [
+                        _vm._v(_vm._s(_vm.priceTotal) + " рублей"),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", {staticClass: "quiz__item-notation"}, [
+                        _vm._v(
+                            "\n            Стоимость рассчитывается примерно, уточняется при расчёте\n            коммерческого предложения в зависимости от меню и\n            ассортимента.\n          "
+                        ),
+                    ]),
+                ]
             ),
             _vm._v(" "),
             _c(
               "div",
-              {
-                staticClass: "quiz__item",
-                class: _vm.current === 4 ? "active" : ""
-              },
+                {
+                    staticClass: "quiz__item",
+                    class: _vm.current === 4 ? "active" : "",
+                },
               [
                 _c(
                   "div",
@@ -2770,26 +2764,26 @@ var render = function() {
                   [
                     _c("the-mask", {
                       attrs: {
-                        mask: "+7 (XXX) XXX-XX-XX",
-                        masked: true,
-                        tokens: _vm.phoneRegular,
-                        type: "text",
-                        id: "phone",
-                        required: "",
-                        placeholder: "+7 (___) ___-__-__"
+                          mask: "+7 (XXX) XXX-XX-XX",
+                          masked: true,
+                          tokens: _vm.phoneRegular,
+                          type: "text",
+                          id: "phone",
+                          required: "",
+                          placeholder: "+7 (___) ___-__-__",
                       },
-                      model: {
-                        value: _vm.phone,
-                        callback: function($$v) {
-                          _vm.phone = $$v
+                        model: {
+                            value: _vm.phone,
+                            callback: function ($$v) {
+                                _vm.phone = $$v
+                            },
+                            expression: "phone",
                         },
-                        expression: "phone"
-                      }
                     }),
-                    _vm._v(" "),
-                    _c("label", { attrs: { for: "phone" } }, [
-                      _vm._v("Телефон")
-                    ])
+                      _vm._v(" "),
+                      _c("label", {attrs: {for: "phone"}}, [
+                          _vm._v("Телефон"),
+                      ]),
                   ],
                   1
                 ),
@@ -2797,27 +2791,27 @@ var render = function() {
                 _c("div", { staticClass: "quiz__item-group" }, [
                   _c("input", {
                     directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
+                        {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.name,
+                            expression: "name",
+                        },
                     ],
-                    attrs: { required: "", type: "text", id: "name" },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
-                      }
-                    }
+                      attrs: {required: "", type: "text", id: "name"},
+                      domProps: {value: _vm.name},
+                      on: {
+                          input: function ($event) {
+                              if ($event.target.composing) {
+                                  return
+                              }
+                              _vm.name = $event.target.value
+                          },
+                      },
                   }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "name" } }, [_vm._v("Имя")])
-                ])
+                    _vm._v(" "),
+                    _c("label", {attrs: {for: "name"}}, [_vm._v("Имя")]),
+                ]),
               ]
             ),
             _vm._v(" "),
@@ -2825,41 +2819,41 @@ var render = function() {
               ? _c("div", { staticClass: "events__link events__link--quiz" }, [
                   _c(
                     "a",
-                    {
-                      staticClass: "events__link-item link--arrow-brown",
-                      attrs: { href: "javascript:void(0)" },
-                      on: {
-                        click: function($event) {
-                          return _vm.changeQuiz(1)
-                        }
-                      }
-                    },
-                    [_vm._v("Далее")]
-                  )
+                      {
+                          staticClass: "events__link-item link--arrow-brown",
+                          attrs: {href: "javascript:void(0)"},
+                          on: {
+                              click: function ($event) {
+                                  return _vm.changeQuiz(1)
+                              },
+                          },
+                      },
+                      [_vm._v("Далее")]
+                  ),
                 ])
               : _vm._e(),
             _vm._v(" "),
             _vm.sendResults
               ? _c("div", { staticClass: "events__link events__link--quiz" }, [
                   _c(
-                    "button",
-                    {
-                      staticClass: "events__link-item link--arrow-brown",
-                      on: {
-                        click: function($event) {
-                          return _vm.changeQuiz(1)
-                        }
-                      }
-                    },
-                    [_vm._v("\n            Отправить\n          ")]
-                  )
+                      "button",
+                      {
+                          staticClass: "events__link-item link--arrow-brown",
+                          on: {
+                              click: function ($event) {
+                                  return _vm.changeQuiz(1)
+                              },
+                          },
+                      },
+                      [_vm._v("\n            Отправить\n          ")]
+                  ),
                 ])
-              : _vm._e()
-          ])
+                : _vm._e(),
+          ]),
         ]
-      )
-    ])
-  ])
+                        ),
+                    ]),
+                ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -15023,23 +15017,39 @@ function getOuterHTML (el) {
     return el.outerHTML
   } else {
     var container = document.createElement('div');
-    container.appendChild(el.cloneNode(true));
-    return container.innerHTML
+      container.appendChild(el.cloneNode(true));
+      return container.innerHTML
   }
 }
 
-Vue.compile = compileToFunctions;
+            Vue.compile = compileToFunctions;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Vue);
+            /* harmony default export */
+            const __WEBPACK_DEFAULT_EXPORT__ = (Vue);
 
 
-/***/ })
+            /***/
+        }),
 
-/******/ 	});
+        /***/
+        "./node_modules/axios/package.json":
+        /*!*****************************************!*\
+          !*** ./node_modules/axios/package.json ***!
+          \*****************************************/
+        /***/ ((module) => {
+
+            "use strict";
+            module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+
+            /***/
+        })
+
+        /******/
+    });
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -15053,14 +15063,14 @@ Vue.compile = compileToFunctions;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -15073,7 +15083,7 @@ Vue.compile = compileToFunctions;
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -15085,7 +15095,7 @@ Vue.compile = compileToFunctions;
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -15097,12 +15107,12 @@ Vue.compile = compileToFunctions;
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -15113,7 +15123,7 @@ Vue.compile = compileToFunctions;
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -15122,21 +15132,24 @@ var __webpack_exports__ = {};
 /*!**********************************!*\
   !*** ./resources/js/quiz/app.js ***!
   \**********************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue */ "./resources/js/quiz/App.vue");
-/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
-/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_1__);
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony import */
+    var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+    /* harmony import */
+    var _App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue */ "./resources/js/quiz/App.vue");
+    /* harmony import */
+    var vue_the_mask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+    /* harmony import */
+    var vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
-vue__WEBPACK_IMPORTED_MODULE_2__.default.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
-var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
-  el: '#quizelem',
-  render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__.default);
-  }
-});
+    vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
+    var app = new vue__WEBPACK_IMPORTED_MODULE_2__["default"]({
+        el: '#quizelem',
+        render: function render(h) {
+            return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+        }
+    });
 })();
 
 /******/ })()
