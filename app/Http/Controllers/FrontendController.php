@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Cataloggr;
 use App\Models\Category;
 use App\Models\CategoryPortfolio;
@@ -41,10 +42,19 @@ class FrontendController extends Controller
         }
 
         $data['portfolio'] = CategoryPortfolio::withCount('portfolioel')->get();
-        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy('dataprov', 'desc')->get();
-        $data['prodgotresh'] = Productgr::where(['active' => true])->orderBy('created_at', 'desc')->get();
+        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy(
+            'dataprov',
+            'desc'
+        )->get();
+        $data['prodgotresh'] = Productgr::where(['active' => true])->orderBy(
+            'created_at',
+            'desc'
+        )->get();
         $data['sliders'] = Slidergl::where(['active' => true])->orderBy('datepub', 'desc')->get();
-        $data['linkvideos'] = Youtube::where(['active' => true])->orderBy('created_at', 'desc')->get();
+        $data['linkvideos'] = Youtube::where(['active' => true])->orderBy(
+            'created_at',
+            'desc'
+        )->get();
 
         return view('main', $data);
     }
@@ -54,15 +64,24 @@ class FrontendController extends Controller
         $data['cont'] = SEO::where('page', 'contacts')->first();
         $data['page'] = SEO::where('page', 'oformlenie')->first();
 
-        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy('dataprov', 'desc')->get();
+        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy(
+            'dataprov',
+            'desc'
+        )->get();
 
         $data['basket'] = 0;
         if (isset($_COOKIE['cart_id'])) {
             $data['basket'] = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
         }
 
-        $data['oformlenievz'] = CategoryStylevz::where(['active' => true])->orderBy('created_at', 'asc')->get();
-        $data['oformleniedet'] = CategoryStyledet::where(['active' => true])->orderBy('created_at', 'asc')->get();
+        $data['oformlenievz'] = CategoryStylevz::where(['active' => true])->orderBy(
+            'created_at',
+            'asc'
+        )->get();
+        $data['oformleniedet'] = CategoryStyledet::where(['active' => true])->orderBy(
+            'created_at',
+            'asc'
+        )->get();
 
         return view('oformlenie', $data);
     }
@@ -77,11 +96,15 @@ class FrontendController extends Controller
         $data['cont'] = SEO::where('page', 'contacts')->first();
         $data['page'] = SEO::where('page', 'uslugi')->first();
 
-        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy('dataprov', 'desc')->get();
+        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy(
+            'dataprov',
+            'desc'
+        )->get();
 
         $data['povodi'] = Povodi::where(['active' => true])->orderBy('created_at', 'desc')->get();
 
-        $data['catformat'] = Format::where(['active' => true])->orderBy('created_at', 'desc')->get();
+        $data['catformat'] = Format::where(['active' => true])->orderBy('created_at', 'desc')->get(
+        );
 
         return view('service', $data);
     }
@@ -105,10 +128,16 @@ class FrontendController extends Controller
 
         $data['level3name'] = null;
 
-        $data['prodgotresh'] = Productgr::where(['active' => true])->orderBy('created_at', 'desc')->get();
+        $data['prodgotresh'] = Productgr::where(['active' => true])->orderBy(
+            'created_at',
+            'desc'
+        )->get();
 
         $data['title'] = $data['info']->name;
-        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy('dataprov', 'desc')->get();
+        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy(
+            'dataprov',
+            'desc'
+        )->get();
         return view('oformlenie.detail', $data);
     }
 
@@ -129,10 +158,16 @@ class FrontendController extends Controller
         $data['level2url'] = null;
         $data['level3name'] = null;
 
-        $data['prodgotresh'] = Productgr::where(['active' => true])->orderBy('created_at', 'desc')->get();
+        $data['prodgotresh'] = Productgr::where(['active' => true])->orderBy(
+            'created_at',
+            'desc'
+        )->get();
 
         $data['title'] = $data['info']->name;
-        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy('dataprov', 'desc')->get();
+        $data['portfolios'] = Portfolio::where(['active' => true])->orderBy(
+            'dataprov',
+            'desc'
+        )->get();
         return view('oformlenie.detail', $data);
     }
 
@@ -202,7 +237,9 @@ class FrontendController extends Controller
             $data['basket'] = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
         }
 
-        $data['reviews'] = Review::where('active', true)->orderBy('created_at', 'DESC')->paginate(9);
+        $data['reviews'] = Review::where('active', true)->orderBy('created_at', 'DESC')->paginate(
+            9
+        );
         return view('reviews', $data);
     }
 
@@ -332,7 +369,8 @@ class FrontendController extends Controller
         $data['h1'] = 'Меню';
         $data['products'] = Product::paginate(6);
         $data['productsgr'] = Productgr::paginate(3);
-        $data['productspop'] = Product::where(['popular' => true, 'active' => true])->inRandomOrder()->take(7)->get();
+        $data['productspop'] = Product::where(['popular' => true, 'active' => true])->inRandomOrder(
+        )->take(7)->get();
 
         return view('menu', $data);
     }
@@ -381,7 +419,8 @@ class FrontendController extends Controller
         } else {
             $data['productsgr'] = null;
         }
-        $data['productspop'] = Product::where(['popular' => true, 'active' => true])->inRandomOrder()->take(7)->get();
+        $data['productspop'] = Product::where(['popular' => true, 'active' => true])->inRandomOrder(
+        )->take(7)->get();
 
         // Выборка просмотра
         $massvr = session('prosmotr');
@@ -546,159 +585,110 @@ class FrontendController extends Controller
 
     public function renderMenuProductAPI($url)
     {
-        $product2 = Productgr::where(['url' => $url, 'active' => true])->first();
-        $data['title'] = $product2->name;
+        $product = Productgr::where(['url' => $url, 'active' => true])->first();
+        $data['title'] = $product->name;
+        $noImgUrl = '/assets/img/noImage.jpg';
+        $data['product'] = $product;
+        $data['h1'] = $product->name;
 
-        $data['product'] = $product2;
-        $data['h1'] = $product2->name;
+        $tabs = [];
+        $i = 0;
+        if ($product->sp1 != null) {
+            $tabs[$i] = [
+                'label'  => $product->sp1,
+                'active' => $i == 0,
+                'idx'    => $i,
+            ];
+            $tabProds = [];
+            foreach ($product->products as $n => $item) {
+                $tabProds[$item->id] = [
+                    'id'       => $item->id,
+                    'title'    => $item->name,
+                    'image'    => $item->attachment()->first()?->url() ?? $noImgUrl,
+                    'compound' => $item->composition,
+                    'active'   => $n == 0,
+                ];
+                $tabs[$i]['products'] = $tabProds;
+            }
+            $i++;
+        }
+        if ($product->sp2 != null) {
+            $tabs[$i] = [
+                'label'  => $product->sp2,
+                'active' => $i == 0,
+                'idx'    => $i,
+            ];
+            $tabProds = [];
+            foreach ($product->products2 as $n => $item) {
+                $tabProds[$item->id] = [
+                    'id'       => $item->id,
+                    'title'    => $item->name,
+                    'image'    => $item->attachment()->first()?->url() ?? $noImgUrl,
+                    'compound' => $item->composition,
+                    'active'   => false,
+                ];
+                $tabs[$i]['products'] = $tabProds;
+            }
+            $i++;
+        }
+        if ($product->sp3 != null) {
+            $tabs[$i] = [
+                'label'  => $product->sp3,
+                'active' => $i == 0,
+                'idx'    => $i,
+            ];
+            $tabProds = [];
+            foreach ($product->products3 as $n => $item) {
+                $tabProds[$item->id] = [
+                    'id'       => $item->id,
+                    'title'    => $item->name,
+                    'image'    => $item->attachment()->first()?->url() ?? $noImgUrl,
+                    'compound' => $item->composition,
+                    'active'   => false,
+                ];
+                $tabs[$i]['products'] = $tabProds;
+            }
+            $i++;
+        }
+        if ($product->sp4 != null) {
+            $tabs[$i] = [
+                'label'  => $product->sp4,
+                'active' => $i == 0,
+                'idx'    => $i,
+            ];
+            $tabProds = [];
+            foreach ($product->products4 as $n => $item) {
+                $tabProds[$item->id] = [
+                    'id'       => $item->id,
+                    'title'    => $item->name,
+                    'image'    => $item->attachment()->first()?->url() ?? $noImgUrl,
+                    'compound' => $item->composition,
+                    'active'   => false,
+                ];
+                $tabs[$i]['products'] = $tabProds;
+            }
+            $i++;
+        }
+        if ($product->sp5 != null) {
+            $tabs[$i] = [
+                'label'  => $product->sp5,
+                'active' => $i == 0,
+                'idx'    => $i,
+            ];
+            $tabProds = [];
+            foreach ($product->products5 as $n => $item) {
+                $tabProds[$item->id] = [
+                    'id'       => $item->id,
+                    'title'    => $item->name,
+                    'image'    => $item->attachment()->first()?->url() ?? $noImgUrl,
+                    'compound' => $item->composition,
+                    'active'   => false,
+                ];
+                $tabs[$i]['products'] = $tabProds;
+            }
+        }
 
-        $k2 = 0;
-        $massel = [];
-        $fl = true;
-
-        if ($product2->sp1 != null) {
-            $massel[$k2]['id'] = $k2;
-            $massel[$k2]['tab'] = $product2->sp1;
-            if ($k2 == 0) {
-                $massel[$k2]['isActiveTab'] = true;
-            } else {
-                $massel[$k2]['isActiveTab'] = false;
-            };
-            $k3 = 0;
-            foreach ($product2->products as $itemel) {
-                $massel[$k2]['info'][$k3]['id'] = $itemel->id;
-                $massel[$k2]['info'][$k3]['title'] = $itemel->name;
-                if ($itemel->attachment()->first() != null) {
-                    $massel[$k2]['info'][$k3]['image'] = $itemel->attachment()->first()->url();
-                } else {
-                    $massel[$k2]['info'][$k3]['image'] = '';
-                }
-
-                $massel[$k2]['info'][$k3]['compound'] = $itemel->composition;
-                if ($fl) {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                    $fl = false;
-                } else {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                }
-                $k3++;
-            };
-            $k2++;
-        };
-        if ($product2->sp2 != null) {
-            $massel[$k2]['id'] = $k2;
-            $massel[$k2]['tab'] = $product2->sp2;
-            if ($k2 == 0) {
-                $massel[$k2]['isActiveTab'] = true;
-            } else {
-                $massel[$k2]['isActiveTab'] = false;
-            };
-            $k3 = 0;
-            foreach ($product2->products2 as $itemel) {
-                $massel[$k2]['info'][$k3]['id'] = $itemel->id;
-                $massel[$k2]['info'][$k3]['title'] = $itemel->name;
-                if ($itemel->attachment()->first() != null) {
-                    $massel[$k2]['info'][$k3]['image'] = $itemel->attachment()->first()->url();
-                } else {
-                    $massel[$k2]['info'][$k3]['image'] = '';
-                }
-                $massel[$k2]['info'][$k3]['compound'] = $itemel->composition;
-                if ($fl) {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                    $fl = false;
-                } else {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                }
-                $k3++;
-            };
-            $k2++;
-        };
-        if ($product2->sp3 != null) {
-            $massel[$k2]['id'] = $k2;
-            $massel[$k2]['tab'] = $product2->sp3;
-            if ($k2 == 0) {
-                $massel[$k2]['isActiveTab'] = true;
-            } else {
-                $massel[$k2]['isActiveTab'] = false;
-            };
-            $k3 = 0;
-            foreach ($product2->products3 as $itemel) {
-                $massel[$k2]['info'][$k3]['id'] = $itemel->id;
-                $massel[$k2]['info'][$k3]['title'] = $itemel->name;
-                if ($itemel->attachment()->first() != null) {
-                    $massel[$k2]['info'][$k3]['image'] = $itemel->attachment()->first()->url();
-                } else {
-                    $massel[$k2]['info'][$k3]['image'] = '';
-                }
-                $massel[$k2]['info'][$k3]['compound'] = $itemel->composition;
-                if ($fl) {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                    $fl = false;
-                } else {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                }
-                $k3++;
-            };
-            $k2++;
-        };
-        if ($product2->sp4 != null) {
-            $massel[$k2]['id'] = $k2;
-            $massel[$k2]['tab'] = $product2->sp4;
-            if ($k2 == 0) {
-                $massel[$k2]['isActiveTab'] = true;
-            } else {
-                $massel[$k2]['isActiveTab'] = false;
-            };
-            $k3 = 0;
-            foreach ($product2->products4 as $itemel) {
-                $massel[$k2]['info'][$k3]['id'] = $itemel->id;
-                $massel[$k2]['info'][$k3]['title'] = $itemel->name;
-                if ($itemel->attachment()->first() != null) {
-                    $massel[$k2]['info'][$k3]['image'] = $itemel->attachment()->first()->url();
-                } else {
-                    $massel[$k2]['info'][$k3]['image'] = '';
-                }
-                $massel[$k2]['info'][$k3]['compound'] = $itemel->composition;
-                if ($fl) {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                    $fl = false;
-                } else {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                }
-                $k3++;
-            };
-            $k2++;
-        };
-        if ($product2->sp5 != null) {
-            $massel[$k2]['id'] = $k2;
-            $massel[$k2]['tab'] = $product2->sp5;
-            if ($k2 == 0) {
-                $massel[$k2]['isActiveTab'] = true;
-            } else {
-                $massel[$k2]['isActiveTab'] = false;
-            };
-            $k3 = 0;
-            foreach ($product2->products5 as $itemel) {
-                $massel[$k2]['info'][$k3]['id'] = $itemel->id;
-                $massel[$k2]['info'][$k3]['title'] = $itemel->name;
-                if ($itemel->attachment()->first() != null) {
-                    $massel[$k2]['info'][$k3]['image'] = $itemel->attachment()->first()->url();
-                } else {
-                    $massel[$k2]['info'][$k3]['image'] = '';
-                }
-                $massel[$k2]['info'][$k3]['compound'] = $itemel->composition;
-                if ($fl) {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                    $fl = false;
-                } else {
-                    $massel[$k2]['info'][$k3]['isActiveProduct'] = $fl;
-                }
-                $k3++;
-            };
-            $k2++;
-        };
-
-        $data['spprod'] = $massel;
+        $data['tabs'] = $tabs;
 
         return $data;
     }
@@ -884,7 +874,11 @@ class FrontendController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
-            $product->load('products', 'hero');
+            $product->load('products');
+            $product->image = $product->attachment->first()?->url();
+            foreach ($product->products as $i => $item) {
+                $product->products[$i]->image = $item->attachment->first()?->url();
+            }
             return [
                 'status'  => true,
                 'product' => $product
@@ -893,8 +887,13 @@ class FrontendController extends Controller
         return ['status' => false, 'product' => []];
     }
 
-    public function addProduct($search)
+    public function getProductList($search)
     {
-        return Product::where('name', 'like', "%" . $search . "%")->get(['id', 'name']);
+        return Product::where('name', 'like', "%" . $search . "%")->get(['id', 'name',]);
+    }
+
+    public function addProduct(Product $product)
+    {
+        return ProductResource::make($product);
     }
 }

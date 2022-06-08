@@ -1,7 +1,7 @@
-/node_modules
-/public/hot
+/node_modules/
+/public/hot/
 /public/storage
-/public/resources/orchid
+/public/resources
 /storage/*.key
 /vendor
 .env
@@ -15,4 +15,4 @@ yarn-error.log
 /.vscode
 error.log
 access.log
-/resources/data
+/resources/data/

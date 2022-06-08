@@ -18,7 +18,8 @@ class ProductListLayout extends Table
                 ->render(function(Product $product){
                     $img = $product->hero()->first();
 
-                return $img ? view('extra.image', ['path' => $product->hero()->first()->url()]) : '';
+                return $img ? view('extra.image', ['path' => $product->hero()->first()->url()]
+                ) : $product->id;
             }),
             TD::make('name', 'Name')->render(function (Product $product){
                 return Link::make($product->name)->route('platform.product.edit', $product);
