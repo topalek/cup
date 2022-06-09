@@ -170,10 +170,9 @@ export default {
             let formData = new FormData();
             let productsvr = [];
             let permas = 0;
-            for (let j = 0; j < this.products.length; j++) {
-                let productsvr2 = this.products[j].info;
-                for (let j2 = 0; j2 < productsvr2.length; j2++) {
-                    productsvr[permas] = productsvr2[j2].id;
+            for (let t in this.tabs) {
+                for (let i in this.tabs[t].products) {
+                    productsvr[permas] = this.tabs[t].products[i].id;
                     permas++;
                 }
             }

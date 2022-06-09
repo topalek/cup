@@ -2302,21 +2302,19 @@ module.exports = {
                         var productsvr = [];
                         var permas = 0;
 
-                        for (var j = 0; j < this.products.length; j++) {
-                            var productsvr2 = this.products[j].info;
+                        for (var t in this.tabs) {
+                            for (var i in this.tabs[t].products) {
+                                productsvr[permas] = this.tabs[t].products[i].id;
+                                permas++;
+                            }
+                        }
 
-                            for (var j2 = 0; j2 < productsvr2.length; j2++) {
-                                productsvr[permas] = productsvr2[j2].id;
-          permas++;
-        }
-      }
-
-      productsvr.forEach(function (value) {
-        formData.append("productsvr[]", value);
-      });
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/addToCartGot', formData, config).then(function (res) {
-        existingObj.output2 = res.data.output;
-      })["catch"](function (err) {
+                        productsvr.forEach(function (value) {
+                            formData.append("productsvr[]", value);
+                        });
+                        axios__WEBPACK_IMPORTED_MODULE_0___default().post('/addToCartGot', formData, config).then(function (res) {
+                            existingObj.output2 = res.data.output;
+                        })["catch"](function (err) {
         existingObj.output2 = 'Ошибка заполнение формы';
       });
     },
@@ -2792,15 +2790,17 @@ module.exports = {
             var cachedSetTimeout;
             var cachedClearTimeout;
 
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
+            function defaultSetTimout() {
+                throw new Error('setTimeout has not been defined');
+            }
+
+            function defaultClearTimeout() {
+                throw new Error('clearTimeout has not been defined');
+            }
+
+            (function () {
+                try {
+                    if (typeof setTimeout === 'function') {
             cachedSetTimeout = setTimeout;
         } else {
             cachedSetTimeout = defaultSetTimout;
@@ -3594,32 +3594,32 @@ __webpack_require__.r(__webpack_exports__);
                                     ],
                                     2
                                 ),
-          _vm._v(" "),
-          _c("div", { staticClass: "solution-catalog__info" }, [
-              _c("div", {staticClass: "solution-catalog__image"}, [
-                  _c("img", {attrs: {src: _vm.currentDish.image, alt: "555"}}),
-              ]),
-              _vm._v(" "),
-              _c("div", {staticClass: "solution-catalog__compound"}, [
-                  _c("div", {staticClass: "solution-catalog__compound-title"}, [
-                      _vm._v("Состав:"),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", {
-                      staticClass: "solution-catalog__compound-text",
-                      domProps: {innerHTML: _vm._s(_vm.currentDish.compound)},
-                  }),
-              ]),
-              _vm._v(" "),
-              _c(
-                  "div",
-                  {
-                      staticClass: "solution-catalog__card",
-                      on: {click: _vm.SendDataPage},
-                  },
-                  [_vm._v("в корзину")]
-              ),
-          ]),
+                                _vm._v(" "),
+                                _c("div", {staticClass: "solution-catalog__info"}, [
+                                    _c("div", {staticClass: "solution-catalog__image"}, [
+                                        _c("img", {attrs: {src: _vm.currentDish.image, alt: "555"}}),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", {staticClass: "solution-catalog__compound"}, [
+                                        _c("div", {staticClass: "solution-catalog__compound-title"}, [
+                                            _vm._v("Состав:"),
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", {
+                                            staticClass: "solution-catalog__compound-text",
+                                            domProps: {innerHTML: _vm._s(_vm.currentDish.compound)},
+                                        }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                        "div",
+                                        {
+                                            staticClass: "solution-catalog__card",
+                                            on: {click: _vm.SendDataPage},
+                                        },
+                                        [_vm._v("в корзину")]
+                                    ),
+                                ]),
                             ]),
                         ]),
                         _vm._v(" "),
@@ -4204,16 +4204,16 @@ __webpack_require__.r(__webpack_exports__);
 
             function normalizeComponent(
                 scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
+                render,
+                staticRenderFns,
+                functionalTemplate,
+                injectStyles,
+                scopeId,
+                moduleIdentifier, /* server only */
+                shadowMode /* vue-cli only */
+            ) {
+                // Vue.extend constructor export interop
+                var options = typeof scriptExports === 'function'
     ? scriptExports.options
     : scriptExports
 
