@@ -98,12 +98,22 @@ class Product extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_products', 'parent_id', 'product_id')->with('hero');
+        return $this->belongsToMany(
+            Product::class,
+            'product_products',
+            'parent_id',
+            'product_id'
+        )->with('attachment');
     }
 
     public function parents()
     {
-        return $this->belongsToMany(Product::class, 'product_products', 'product_id', 'parent_id')->with('hero');
+        return $this->belongsToMany(
+            Product::class,
+            'product_products',
+            'product_id',
+            'parent_id'
+        )->with('attachment');
     }
 
     public function getList(bool $includeSelf = false): array
@@ -119,6 +129,11 @@ class Product extends Model
     public function scopeNotSelf(Builder $query, $selfId)
     {
         return $query->whereNotIn('id', [$selfId]);
+    }
+
+    public function getImageAttribute(): string
+    {
+        return $this->attachment()->first()?->url() ?? '';
     }
 
 }

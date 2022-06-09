@@ -1,10 +1,9 @@
 <template>
-    <div
-        class="solution-catalog__product"
+    <div class="modal__results-item"
+         @click="addProduct(id)"
     >
-        <div class="solution-catalog__product-title">
-            {{ id }}. {{ title }}
-        </div>
+        {{ title }}
+        <div class="modal__results-addbtn" @click="addProduct(id)">Добавить</div>
     </div>
 </template>
 
@@ -18,6 +17,11 @@ export default {
         id: {
             type: Number,
             default: '',
+        }
+    },
+    methods: {
+        addProduct(id) {
+            this.$emit('addProduct', id)
         }
     }
 }

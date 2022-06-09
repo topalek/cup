@@ -38,4 +38,5 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 Route::get('menuprod/{url}', [FrontendController::class, 'renderMenuProductAPI']);
 Route::get('replace-product/{id}', [FrontendController::class, 'replaceProduct']);
-Route::get('add-product/{search}', [FrontendController::class, 'addProduct']);
+Route::get('add-product/{product}', [FrontendController::class, 'addProduct']);
+Route::get('get-product-list/{search}', [FrontendController::class, 'getProductList']);

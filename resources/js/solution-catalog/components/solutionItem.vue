@@ -1,15 +1,15 @@
 <template>
     <div
         class="solution-catalog__product"
-        @click="openModal(item.id)"
+        @click.self="changeInfo(product.id)"
     >
         <div class="solution-catalog__product-title">
-            {{ item.title }}
+            {{ product.title }}
         </div>
         <div class="solution-catalog__product-icons">
             <div
                 class="solution-catalog__product-icon solution-catalog__product-icon--replace"
-                @click="openModal(item.id)"
+                @click="openModal(product.id)"
             >
                 <svg
                     fill="none"
@@ -34,7 +34,7 @@
             </div>
             <div
                 class="solution-catalog__product-icon solution-catalog__product-icon--delete"
-                @click="deleteItem(item.id)"
+                @click="deleteItem(product.id)"
             >
                 <svg
                     fill="none"
@@ -55,7 +55,7 @@
 <script>
 export default {
     props: {
-        item: {}
+        product: {},
     },
     methods: {
         deleteItem(id) {
@@ -63,6 +63,9 @@ export default {
         },
         openModal(id) {
             this.$emit('openModal', id)
+        },
+        changeInfo(id) {
+            this.$emit('changeInfo', id)
         }
     }
 
