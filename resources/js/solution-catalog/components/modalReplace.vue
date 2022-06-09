@@ -20,7 +20,7 @@
                 </svg>
             </div>
             <div class="modal__product">
-                1. {{ product.name }}
+                1. {{ product.title }}
             </div>
             <div class="modal__items">
                 <modal-replace-item
@@ -29,7 +29,7 @@
                     :key="item.id"
                     v-model="replaceProduct"
                     :img="item.image"
-                    :title="item.name"
+                    :title="item.title"
                     @replaceItem="replaceItem(item.id)"
                 />
                 <div class="modal__item modal__item--another">
@@ -61,7 +61,7 @@ export default {
     },
     data() {
         return {
-            replaceProduct: null
+            replaceProduct: ''
         }
     },
     watch: {

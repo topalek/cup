@@ -2104,13 +2104,19 @@ module.exports = {
 
             function _defineProperty(obj, key, value) {
                 if (key in obj) {
-                    Object.defineProperty(obj, key, {value: value, enumerable: true, configurable: true, writable: true});
+                    Object.defineProperty(obj, key, {
+                        value: value,
+                        enumerable: true,
+                        configurable: true,
+                        writable: true
+                    });
                 } else {
                     obj[key] = value;
                 }
                 return obj;
             }
 
+//
 //
 //
 //
@@ -2184,6 +2190,14 @@ module.exports = {
                         currentProduct: {},
                         currentDish: {},
                         activeTab: {},
+                        emptyProduct: {
+                            title: 'Другой продукт',
+                            id: 'other',
+                            image: "/assets/img/noImage.jpg",
+                            compound: "<p>Другой продукт</p>",
+                            active: false,
+                            products: []
+                        },
                         tabs: [],
                         products: [],
                         product: {},
@@ -2200,8 +2214,7 @@ module.exports = {
                             _this.Pages = res.data;
                             _this.tabs = res.data.tabs;
                             _this.activeTab = _this.tabs[0];
-                            var activeTabProducts = _this.activeTab.products;
-                            _this.currentDish = activeTabProducts[_this.firstProdId()];
+                            _this.currentDish = _this.activeTab.products[_this.firstProdId()];
                         });
                     },
                     openModal: function openModal(id) {
@@ -2216,12 +2229,22 @@ module.exports = {
                     },
                     closeModal: function closeModal() {
                         this.showModal = false;
+                        this.removeBodyClass();
                     },
                     closeAddModal: function closeAddModal() {
                         this.showAddModal = false;
+                        this.removeBodyClass();
                     },
                     openAddModal: function openAddModal() {
+                        var _this3 = this;
+
                         this.showAddModal = true;
+                        this.$nextTick(function () {
+                            _this3.focusInput();
+                        });
+                    },
+                    focusInput: function focusInput() {
+                        this.$refs.addModal.$refs.search.focus();
                     },
                     changeTab: function changeTab() {
                         var idx = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -2255,13 +2278,15 @@ module.exports = {
                         this.currentDish = this.activeTab.products[id];
                     },
                     addProduct: function addProduct(id) {
-                        var _this3 = this;
+                        var _this4 = this;
 
                         axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/add-product/' + id).then(function (res) {
                             var prod = res.data.data;
                             var prodId = prod.id;
-                            _this3.tabs[_this3.activeTab.idx].products[prodId] = _objectSpread({}, prod);
-                            _this3.activeTab = _this3.tabs[_this3.activeTab.idx];
+                            _this4.tabs[_this4.activeTab.idx].products[prodId] = _objectSpread({}, prod);
+                            _this4.activeTab = _this4.tabs[_this4.activeTab.idx];
+
+                            _this4.closeAddModal();
                         });
                     },
                     SendDataPage: function SendDataPage() {
@@ -2274,14 +2299,14 @@ module.exports = {
                         /*Формирование массива для передачи*/
 
                         var formData = new FormData();
-      var productsvr = [];
-      var permas = 0;
+                        var productsvr = [];
+                        var permas = 0;
 
-      for (var j = 0; j < this.products.length; j++) {
-        var productsvr2 = this.products[j].info;
+                        for (var j = 0; j < this.products.length; j++) {
+                            var productsvr2 = this.products[j].info;
 
-        for (var j2 = 0; j2 < productsvr2.length; j2++) {
-          productsvr[permas] = productsvr2[j2].id;
+                            for (var j2 = 0; j2 < productsvr2.length; j2++) {
+                                productsvr[permas] = productsvr2[j2].id;
           permas++;
         }
       }
@@ -2308,6 +2333,23 @@ module.exports = {
     },
                     firstProdId: function firstProdId() {
                         return Object.keys(this.activeTab.products)[0];
+                    },
+                    changeDish: function changeDish(id) {
+                        var newProd = this.emptyProduct;
+
+                        if (id) {
+                            newProd = this.product.products[id];
+                        } else {
+                            id = 'other';
+                        }
+
+                        delete this.tabs[this.activeTab.idx].products[this.product.id];
+                        this.tabs[this.activeTab.idx].products[id] = newProd;
+                        this.activeTab = this.tabs[this.activeTab.idx];
+                        this.closeModal();
+                    },
+                    removeBodyClass: function removeBodyClass() {
+                        document.querySelector('body').classList.remove('overflow');
                     }
                 },
                 computed: {
@@ -2326,7 +2368,8 @@ module.exports = {
             /***/
         }),
 
-        /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAdd.vue?vue&type=script&lang=js&":
+        /***/
+        "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAdd.vue?vue&type=script&lang=js&":
         /*!********************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAdd.vue?vue&type=script&lang=js& ***!
           \********************************************************************************************************************************************************************************************************************************/
@@ -2399,12 +2442,17 @@ module.exports = {
 //
 //
 //
+//
+//
 
 
             /* harmony default export */
             const __WEBPACK_DEFAULT_EXPORT__ = ({
                 components: {
                     ModalAddItem: _modalAddItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+                },
+                props: {
+                    focus: {}
                 },
                 data: function data() {
                     return {
@@ -2440,7 +2488,8 @@ module.exports = {
             /***/
         }),
 
-        /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=script&lang=js&":
+        /***/
+        "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=script&lang=js&":
         /*!************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=script&lang=js& ***!
           \************************************************************************************************************************************************************************************************************************************/
@@ -2484,7 +2533,8 @@ module.exports = {
             /***/
         }),
 
-        /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplace.vue?vue&type=script&lang=js&":
+        /***/
+        "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplace.vue?vue&type=script&lang=js&":
         /*!************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplace.vue?vue&type=script&lang=js& ***!
           \************************************************************************************************************************************************************************************************************************************/
@@ -2561,7 +2611,7 @@ module.exports = {
                 },
                 data: function data() {
                     return {
-                        replaceProduct: null
+                        replaceProduct: ''
                     };
                 },
                 watch: {
@@ -2579,7 +2629,8 @@ module.exports = {
             /***/
         }),
 
-        /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=script&lang=js&":
+        /***/
+        "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=script&lang=js&":
         /*!****************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=script&lang=js& ***!
           \****************************************************************************************************************************************************************************************************************************************/
@@ -2634,7 +2685,8 @@ module.exports = {
             /***/
         }),
 
-        /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/solutionItem.vue?vue&type=script&lang=js&":
+        /***/
+        "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/solutionItem.vue?vue&type=script&lang=js&":
         /*!************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/solutionItem.vue?vue&type=script&lang=js& ***!
           \************************************************************************************************************************************************************************************************************************************/
@@ -2722,7 +2774,8 @@ module.exports = {
             /***/
         }),
 
-        /***/ "./node_modules/process/browser.js":
+        /***/
+        "./node_modules/process/browser.js":
         /*!*****************************************!*\
           !*** ./node_modules/process/browser.js ***!
           \*****************************************/
@@ -2737,7 +2790,7 @@ module.exports = {
 // function because try/catches deoptimize in certain engines.
 
             var cachedSetTimeout;
-var cachedClearTimeout;
+            var cachedClearTimeout;
 
 function defaultSetTimout() {
     throw new Error('setTimeout has not been defined');
@@ -2958,7 +3011,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalAdd.vue":
+        /***/
+        "./resources/js/solution-catalog/components/modalAdd.vue":
         /*!***************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalAdd.vue ***!
           \***************************************************************/
@@ -3002,7 +3056,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalAddItem.vue":
+        /***/
+        "./resources/js/solution-catalog/components/modalAddItem.vue":
         /*!*******************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalAddItem.vue ***!
           \*******************************************************************/
@@ -3046,7 +3101,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalReplace.vue":
+        /***/
+        "./resources/js/solution-catalog/components/modalReplace.vue":
         /*!*******************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalReplace.vue ***!
           \*******************************************************************/
@@ -3090,7 +3146,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalReplaceItem.vue":
+        /***/
+        "./resources/js/solution-catalog/components/modalReplaceItem.vue":
         /*!***********************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalReplaceItem.vue ***!
           \***********************************************************************/
@@ -3134,7 +3191,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/solutionItem.vue":
+        /***/
+        "./resources/js/solution-catalog/components/solutionItem.vue":
         /*!*******************************************************************!*\
           !*** ./resources/js/solution-catalog/components/solutionItem.vue ***!
           \*******************************************************************/
@@ -3178,7 +3236,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/App.vue?vue&type=script&lang=js&":
+        /***/
+        "./resources/js/solution-catalog/App.vue?vue&type=script&lang=js&":
         /*!************************************************************************!*\
           !*** ./resources/js/solution-catalog/App.vue?vue&type=script&lang=js& ***!
           \************************************************************************/
@@ -3199,7 +3258,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalAdd.vue?vue&type=script&lang=js&":
+        /***/
+        "./resources/js/solution-catalog/components/modalAdd.vue?vue&type=script&lang=js&":
         /*!****************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalAdd.vue?vue&type=script&lang=js& ***!
           \****************************************************************************************/
@@ -3220,7 +3280,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=script&lang=js&":
+        /***/
+        "./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=script&lang=js&":
         /*!********************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=script&lang=js& ***!
           \********************************************************************************************/
@@ -3241,7 +3302,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalReplace.vue?vue&type=script&lang=js&":
+        /***/
+        "./resources/js/solution-catalog/components/modalReplace.vue?vue&type=script&lang=js&":
         /*!********************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalReplace.vue?vue&type=script&lang=js& ***!
           \********************************************************************************************/
@@ -3262,7 +3324,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=script&lang=js&":
+        /***/
+        "./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=script&lang=js&":
         /*!************************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=script&lang=js& ***!
           \************************************************************************************************/
@@ -3283,7 +3346,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/solutionItem.vue?vue&type=script&lang=js&":
+        /***/
+        "./resources/js/solution-catalog/components/solutionItem.vue?vue&type=script&lang=js&":
         /*!********************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/solutionItem.vue?vue&type=script&lang=js& ***!
           \********************************************************************************************/
@@ -3304,7 +3368,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/App.vue?vue&type=template&id=3e21dab5&":
+        /***/
+        "./resources/js/solution-catalog/App.vue?vue&type=template&id=3e21dab5&":
         /*!******************************************************************************!*\
           !*** ./resources/js/solution-catalog/App.vue?vue&type=template&id=3e21dab5& ***!
           \******************************************************************************/
@@ -3314,8 +3379,10 @@ __webpack_require__.r(__webpack_exports__);
             __webpack_require__.r(__webpack_exports__);
             /* harmony export */
             __webpack_require__.d(__webpack_exports__, {
-                /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_3e21dab5___WEBPACK_IMPORTED_MODULE_0__.render),
-                /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_3e21dab5___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+                /* harmony export */
+                "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_3e21dab5___WEBPACK_IMPORTED_MODULE_0__.render),
+                /* harmony export */
+                "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_3e21dab5___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
                 /* harmony export */
             });
             /* harmony import */
@@ -3325,7 +3392,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalAdd.vue?vue&type=template&id=8ef4477e&scoped=true&":
+        /***/
+        "./resources/js/solution-catalog/components/modalAdd.vue?vue&type=template&id=8ef4477e&scoped=true&":
         /*!**********************************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalAdd.vue?vue&type=template&id=8ef4477e&scoped=true& ***!
           \**********************************************************************************************************/
@@ -3348,7 +3416,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=template&id=7df8fd74&scoped=true&":
+        /***/
+        "./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=template&id=7df8fd74&scoped=true&":
         /*!**************************************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=template&id=7df8fd74&scoped=true& ***!
           \**************************************************************************************************************/
@@ -3371,7 +3440,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalReplace.vue?vue&type=template&id=e9005e58&scoped=true&":
+        /***/
+        "./resources/js/solution-catalog/components/modalReplace.vue?vue&type=template&id=e9005e58&scoped=true&":
         /*!**************************************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalReplace.vue?vue&type=template&id=e9005e58&scoped=true& ***!
           \**************************************************************************************************************/
@@ -3394,7 +3464,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=template&id=ba1f1ef2&scoped=true&":
+        /***/
+        "./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=template&id=ba1f1ef2&scoped=true&":
         /*!******************************************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=template&id=ba1f1ef2&scoped=true& ***!
           \******************************************************************************************************************/
@@ -3417,7 +3488,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./resources/js/solution-catalog/components/solutionItem.vue?vue&type=template&id=43ac4b39&scoped=true&":
+        /***/
+        "./resources/js/solution-catalog/components/solutionItem.vue?vue&type=template&id=43ac4b39&scoped=true&":
         /*!**************************************************************************************************************!*\
           !*** ./resources/js/solution-catalog/components/solutionItem.vue?vue&type=template&id=43ac4b39&scoped=true& ***!
           \**************************************************************************************************************/
@@ -3440,7 +3512,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/App.vue?vue&type=template&id=3e21dab5&":
+        /***/
+        "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/App.vue?vue&type=template&id=3e21dab5&":
         /*!*********************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/App.vue?vue&type=template&id=3e21dab5& ***!
           \*********************************************************************************************************************************************************************************************************************/
@@ -3490,43 +3563,43 @@ __webpack_require__.r(__webpack_exports__);
                                 }),
                                 0
                             ),
-        _vm._v(" "),
-        _c("div", { staticClass: "solution-catalog__wrap" }, [
-          _c(
-              "div",
-              {staticClass: "solution-catalog__list"},
-              [
-                  _vm._l(_vm.activeTab.products, function (item) {
-                      return _c("solution-item", {
-                          key: item.id,
-                          class: {active: item.active},
-                          attrs: {product: item},
-                          on: {
-                              deleteItem: _vm.deleteZap,
-                              openModal: _vm.openModal,
-                              changeInfo: _vm.changeInfo,
-                          },
-                      })
-                  }),
-                  _vm._v(" "),
-                  _c(
-                      "a",
-                      {
-                          staticClass: "solution-catalog__add",
-                          attrs: {href: "javascript:void(0);"},
-                          on: {click: _vm.openAddModal},
-                      },
-                      [_vm._v("Добавить")]
-                  ),
-              ],
-              2
-          ),
+                            _vm._v(" "),
+                            _c("div", {staticClass: "solution-catalog__wrap"}, [
+                                _c(
+                                    "div",
+                                    {staticClass: "solution-catalog__list"},
+                                    [
+                                        _vm._l(_vm.activeTab.products, function (item) {
+                                            return _c("solution-item", {
+                                                key: item.id,
+                                                class: {active: item.active},
+                                                attrs: {product: item},
+                                                on: {
+                                                    changeInfo: _vm.changeInfo,
+                                                    deleteItem: _vm.deleteZap,
+                                                    openModal: _vm.openModal,
+                                                },
+                                            })
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                            "a",
+                                            {
+                                                staticClass: "solution-catalog__add",
+                                                attrs: {href: "javascript:void(0);"},
+                                                on: {click: _vm.openAddModal},
+                                            },
+                                            [_vm._v("Добавить")]
+                                        ),
+                                    ],
+                                    2
+                                ),
           _vm._v(" "),
           _c("div", { staticClass: "solution-catalog__info" }, [
-            _c("div", { staticClass: "solution-catalog__image" }, [
-                _c("img", {attrs: {src: _vm.currentDish.image, alt: "555"}}),
-            ]),
-            _vm._v(" "),
+              _c("div", {staticClass: "solution-catalog__image"}, [
+                  _c("img", {attrs: {src: _vm.currentDish.image, alt: "555"}}),
+              ]),
+              _vm._v(" "),
               _c("div", {staticClass: "solution-catalog__compound"}, [
                   _c("div", {staticClass: "solution-catalog__compound-title"}, [
                       _vm._v("Состав:"),
@@ -3547,7 +3620,7 @@ __webpack_require__.r(__webpack_exports__);
                   [_vm._v("в корзину")]
               ),
           ]),
-        ]),
+                            ]),
                         ]),
                         _vm._v(" "),
                         _vm.showModal
@@ -3560,10 +3633,11 @@ __webpack_require__.r(__webpack_exports__);
                         _vm._v(" "),
                         _vm.showAddModal
                             ? _c("modal-add", {
+                                ref: "addModal",
                                 class: {"modal--active": _vm.showAddModal},
                                 on: {
-                                    closeAddModal: _vm.closeAddModal,
                                     addProduct: _vm.addProduct,
+                                    closeAddModal: _vm.closeAddModal,
                                 },
                             })
                             : _vm._e(),
@@ -3578,7 +3652,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAdd.vue?vue&type=template&id=8ef4477e&scoped=true&":
+        /***/
+        "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAdd.vue?vue&type=template&id=8ef4477e&scoped=true&":
         /*!*************************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAdd.vue?vue&type=template&id=8ef4477e&scoped=true& ***!
           \*************************************************************************************************************************************************************************************************************************************************/
@@ -3650,7 +3725,8 @@ __webpack_require__.r(__webpack_exports__);
                                             expression: "productTitle",
                                         },
                                     ],
-                                    attrs: {type: "text", placeholder: "Поиск"},
+                                    ref: "search",
+                                    attrs: {placeholder: "Поиск", type: "text"},
                                     domProps: {value: _vm.productTitle},
                                     on: {
                                         input: function ($event) {
@@ -3667,20 +3743,20 @@ __webpack_require__.r(__webpack_exports__);
                                         "svg",
                                         {
                                             attrs: {
-                                                width: "16",
+                                                fill: "none",
                                                 height: "15",
                                                 viewBox: "0 0 16 15",
-                                                fill: "none",
+                                                width: "16",
                                                 xmlns: "http://www.w3.org/2000/svg",
                                             },
                                         },
                                         [
                                             _c("path", {
                                                 attrs: {
-                                                    "fill-rule": "evenodd",
                                                     "clip-rule": "evenodd",
                                                     d: "M5.41847 0.0342498C4.01533 0.191486 2.76271 0.790285 1.77895 1.77402C0.824816 2.72819 0.224173 3.92804 0.0439679 5.23984C-0.0143914 5.66482 -0.0147136 6.50748 0.0433527 6.91606C0.190423 7.95103 0.595158 8.92046 1.23248 9.76433C1.46709 10.075 2.05329 10.6615 2.36272 10.8952C3.11111 11.4603 3.94654 11.8424 4.83297 12.0248C6.37103 12.3414 8.04171 12.0304 9.34609 11.1845L9.50538 11.0813L11.2632 12.8309C13.1867 14.7455 13.1689 14.7304 13.5829 14.8014C14.1213 14.8937 14.66 14.6147 14.8916 14.1236C15.0491 13.7896 15.0357 13.3292 14.8593 13.0098C14.8133 12.9267 14.1261 12.2162 12.9988 11.0866L11.2113 9.2952L11.3194 9.11725C11.6978 8.49428 11.9956 7.58502 12.0975 6.74107C12.1402 6.38754 12.1345 5.72543 12.0855 5.33294C11.8813 3.69815 11.0389 2.23263 9.73137 1.23727C8.52338 0.317697 6.90856 -0.132742 5.41847 0.0342498ZM6.5171 2.02579C7.96237 2.19803 9.18214 3.09305 9.77927 4.41944C10.4618 5.93552 10.1397 7.73218 8.97329 8.91615C8.25757 9.64263 7.39937 10.0485 6.39203 10.1369C4.72891 10.2828 3.12271 9.36135 2.38651 7.83894C2.22638 7.50779 2.06671 6.983 2.01925 6.63188C1.97354 6.29382 1.99766 5.55032 2.06416 5.24616C2.25479 4.37432 2.7347 3.56241 3.39013 3.00287C4.28067 2.24262 5.40045 1.89273 6.5171 2.02579Z",
                                                     fill: "#5F5839",
+                                                    "fill-rule": "evenodd",
                                                 },
                                             }),
                                         ]
@@ -3688,18 +3764,20 @@ __webpack_require__.r(__webpack_exports__);
                                 ]),
                             ]),
                             _vm._v(" "),
-                            _c(
-                                "div",
-                                {staticClass: "modal__results"},
-                                _vm._l(_vm.products, function (item) {
-                                    return _c("modal-add-item", {
-                                        key: item.id,
-                                        attrs: {id: item.id, img: item.image, title: item.name},
-                                        on: {addProduct: _vm.addProduct},
-                                    })
-                                }),
-                                1
-                            ),
+                            _c("div", {staticClass: "modal__results"}, [
+                                _c(
+                                    "div",
+                                    {staticClass: "list"},
+                                    _vm._l(_vm.products, function (item) {
+                                        return _c("modal-add-item", {
+                                            key: item.id,
+                                            attrs: {id: item.id, img: item.image, title: item.name},
+                                            on: {addProduct: _vm.addProduct},
+                                        })
+                                    }),
+                                    1
+                                ),
+                            ]),
                         ]),
                     ]
                 )
@@ -3711,7 +3789,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=template&id=7df8fd74&scoped=true&":
+        /***/
+        "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=template&id=7df8fd74&scoped=true&":
         /*!*****************************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalAddItem.vue?vue&type=template&id=7df8fd74&scoped=true& ***!
           \*****************************************************************************************************************************************************************************************************************************************************/
@@ -3763,7 +3842,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplace.vue?vue&type=template&id=e9005e58&scoped=true&":
+        /***/
+        "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplace.vue?vue&type=template&id=e9005e58&scoped=true&":
         /*!*****************************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplace.vue?vue&type=template&id=e9005e58&scoped=true& ***!
           \*****************************************************************************************************************************************************************************************************************************************************/
@@ -3826,7 +3906,9 @@ __webpack_require__.r(__webpack_exports__);
                             ),
                             _vm._v(" "),
                             _c("div", {staticClass: "modal__product"}, [
-                                _vm._v("\n            1. " + _vm._s(_vm.product.name) + "\n        "),
+                                _vm._v(
+                                    "\n            1. " + _vm._s(_vm.product.title) + "\n        "
+                                ),
                             ]),
                             _vm._v(" "),
                             _c(
@@ -3836,7 +3918,7 @@ __webpack_require__.r(__webpack_exports__);
                                     _vm._l(_vm.product.products, function (item) {
                                         return _c("modal-replace-item", {
                                             key: item.id,
-                                            attrs: {id: item.id, img: item.image, title: item.name},
+                                            attrs: {id: item.id, img: item.image, title: item.title},
                                             on: {
                                                 replaceItem: function ($event) {
                                                     return _vm.replaceItem(item.id)
@@ -3910,7 +3992,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=template&id=ba1f1ef2&scoped=true&":
+        /***/
+        "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=template&id=ba1f1ef2&scoped=true&":
         /*!*********************************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/modalReplaceItem.vue?vue&type=template&id=ba1f1ef2&scoped=true& ***!
           \*********************************************************************************************************************************************************************************************************************************************************/
@@ -3959,7 +4042,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/solutionItem.vue?vue&type=template&id=43ac4b39&scoped=true&":
+        /***/
+        "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/solutionItem.vue?vue&type=template&id=43ac4b39&scoped=true&":
         /*!*****************************************************************************************************************************************************************************************************************************************************!*\
           !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/solution-catalog/components/solutionItem.vue?vue&type=template&id=43ac4b39&scoped=true& ***!
           \*****************************************************************************************************************************************************************************************************************************************************/
@@ -3991,9 +4075,21 @@ __webpack_require__.r(__webpack_exports__);
                         },
                     },
                     [
-                        _c("div", {staticClass: "solution-catalog__product-title"}, [
-                            _vm._v("\n        " + _vm._s(_vm.product.title) + "\n    "),
-                        ]),
+                        _c(
+                            "div",
+                            {
+                                staticClass: "solution-catalog__product-title ",
+                                on: {
+                                    click: function ($event) {
+                                        if ($event.target !== $event.currentTarget) {
+                                            return null
+                                        }
+                                        return _vm.changeInfo(_vm.product.id)
+                                    },
+                                },
+                            },
+                            [_vm._v("\n        " + _vm._s(_vm.product.title) + "\n    ")]
+                        ),
                         _vm._v(" "),
                         _c("div", {staticClass: "solution-catalog__product-icons"}, [
                             _c(
@@ -4086,7 +4182,8 @@ __webpack_require__.r(__webpack_exports__);
             /***/
         }),
 
-        /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+        /***/
+        "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
         /*!********************************************************************!*\
           !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
           \********************************************************************/
@@ -4096,16 +4193,17 @@ __webpack_require__.r(__webpack_exports__);
             __webpack_require__.r(__webpack_exports__);
             /* harmony export */
             __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ normalizeComponent)
-/* harmony export */ });
-/* globals __VUE_SSR_CONTEXT__ */
+                /* harmony export */   "default": () => (/* binding */ normalizeComponent)
+                /* harmony export */
+            });
+            /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
 // This module is a runtime utility for cleaner component module output and will
 // be included in the final webpack user bundle.
 
-function normalizeComponent (
-  scriptExports,
+            function normalizeComponent(
+                scriptExports,
   render,
   staticRenderFns,
   functionalTemplate,
@@ -16256,14 +16354,15 @@ function getOuterHTML (el) {
             /***/
         }),
 
-        /***/ "./node_modules/axios/package.json":
+        /***/
+        "./node_modules/axios/package.json":
         /*!*****************************************!*\
           !*** ./node_modules/axios/package.json ***!
           \*****************************************/
         /***/ ((module) => {
 
             "use strict";
-            module.exports = JSON.parse('{"_from":"axios@^0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21.4","name":"axios","escapedName":"axios","rawSpec":"^0.21.4","saveSpec":null,"fetchSpec":"^0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21.4","_where":"/home/topalek/www/cup","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+            module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
             /***/
         })

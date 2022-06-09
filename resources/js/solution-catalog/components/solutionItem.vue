@@ -3,7 +3,7 @@
         class="solution-catalog__product"
         @click.self="changeInfo(product.id)"
     >
-        <div class="solution-catalog__product-title">
+        <div class="solution-catalog__product-title " @click.self="changeInfo(product.id)">
             {{ product.title }}
         </div>
         <div class="solution-catalog__product-icons">

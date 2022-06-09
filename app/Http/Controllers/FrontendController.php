@@ -583,7 +583,7 @@ class FrontendController extends Controller
         }
     }
 
-    public function renderMenuProductAPI($url)
+    public function renderMenuProductAPI($url): array
     {
         $product = Productgr::where(['url' => $url, 'active' => true])->first();
         $data['title'] = $product->name;
@@ -870,18 +870,14 @@ class FrontendController extends Controller
         return Portfolio::withCount('attachment')->get()->toArray();
     }
 
-    public function replaceProduct($id)
+    public function replaceProduct($id): array
     {
         $product = Product::find($id);
         if ($product) {
             $product->load('products');
-            $product->image = $product->attachment->first()?->url();
-            foreach ($product->products as $i => $item) {
-                $product->products[$i]->image = $item->attachment->first()?->url();
-            }
             return [
                 'status'  => true,
-                'product' => $product
+                'product' => ProductResource::make($product)
             ];
         }
         return ['status' => false, 'product' => []];

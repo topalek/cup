@@ -6,20 +6,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray($request)
+    public $preserveKeys = true;
+
+    public function toArray($request): array
     {
         return [
             'id'       => $this->id,
             'title'    => $this->name,
             'image'    => $this->attachment()->first()?->url() ?: '/assets/img/noImage.jpg',
             'compound' => $this->composition,
-            'active'   => false
+            'active'   => false,
+            'products' => count($this->products) ? ProductResource::collection($this->products->keyBy('id')) : []
         ];
     }
 }

@@ -48,6 +48,7 @@
             @replaceItem="changeDish"
         />
         <modal-add
+            ref="addModal"
             v-if="showAddModal"
             :class="{'modal--active':showAddModal}"
             @addProduct="addProduct"
@@ -73,6 +74,14 @@ export default {
         currentProduct: {},
         currentDish: {},
         activeTab: {},
+        emptyProduct: {
+            title: 'Другой продукт',
+            id: 'other',
+            image: "/assets/img/noImage.jpg",
+            compound: "<p>Другой продукт</p>",
+            active: false,
+            products: [],
+        },
         tabs: [],
         products: [],
         product: {},
@@ -87,8 +96,7 @@ export default {
                     this.Pages = res.data;
                     this.tabs = res.data.tabs
                     this.activeTab = this.tabs[0]
-                    let activeTabProducts = this.activeTab.products
-                    this.currentDish = activeTabProducts[this.firstProdId()]
+                    this.currentDish = this.activeTab.products[this.firstProdId()]
                 })
         },
         openModal(id) {
@@ -102,12 +110,20 @@ export default {
         },
         closeModal() {
             this.showModal = false
+            this.removeBodyClass()
         },
         closeAddModal() {
             this.showAddModal = false
+            this.removeBodyClass()
         },
         openAddModal() {
             this.showAddModal = true
+            this.$nextTick(() => {
+                this.focusInput();
+            })
+        },
+        focusInput() {
+            this.$refs.addModal.$refs.search.focus();
         },
         changeTab(idx = null) {
             if (!idx) {
@@ -139,6 +155,7 @@ export default {
                     let prodId = prod.id
                     this.tabs[this.activeTab.idx].products[prodId] = {...prod}
                     this.activeTab = this.tabs[this.activeTab.idx]
+                    this.closeAddModal()
                 })
         },
 
@@ -185,6 +202,22 @@ export default {
         },
         firstProdId() {
             return Object.keys(this.activeTab.products)[0]
+        },
+        changeDish(id) {
+            let newProd = this.emptyProduct
+            if (id) {
+                newProd = this.product.products[id]
+            } else {
+                id = 'other'
+            }
+
+            delete this.tabs[this.activeTab.idx].products[this.product.id]
+            this.tabs[this.activeTab.idx].products[id] = newProd
+            this.activeTab = this.tabs[this.activeTab.idx]
+            this.closeModal()
+        },
+        removeBodyClass() {
+            document.querySelector('body').classList.remove('overflow')
         }
     },
     computed: {

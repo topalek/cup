@@ -20,7 +20,7 @@
                 </svg>
             </div>
             <div class="modal__search">
-                <input v-model="productTitle" placeholder="Поиск" type="text"/>
+                <input ref="search" v-model="productTitle" placeholder="Поиск" type="text"/>
                 <a class="modal__search-icon" href="#">
                     <svg
                         fill="none"
@@ -39,14 +39,16 @@
                 </a>
             </div>
             <div class="modal__results">
-                <modal-add-item
-                    v-for="item in products"
-                    :id="item.id"
-                    :key="item.id"
-                    :img="item.image"
-                    :title="item.name"
-                    @addProduct="addProduct"
-                />
+                <div class="list">
+                    <modal-add-item
+                        v-for="item in products"
+                        :id="item.id"
+                        :key="item.id"
+                        :img="item.image"
+                        :title="item.name"
+                        @addProduct="addProduct"
+                    />
+                </div>
             </div>
         </div>
     </div>
@@ -58,6 +60,9 @@ import axios from 'axios'
 
 export default {
     components: {ModalAddItem},
+    props: {
+        focus: {}
+    },
     data() {
         return {
             productTitle: '',
