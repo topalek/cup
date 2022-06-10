@@ -40,6 +40,12 @@
                 </div>
             </div>
         </div>
+        <modal-info
+            v-if="showInfo"
+            :class="{'modal--active':showInfo}"
+            :message="info.message"
+            :status="info.status"
+            @closeModal="closeModal"/>
         <modal-replace
             v-if="showModal"
             :class="{'modal--active':showModal}"
@@ -52,7 +58,7 @@
             v-if="showAddModal"
             :class="{'modal--active':showAddModal}"
             @addProduct="addProduct"
-            @closeAddModal="closeAddModal"
+            @closeAddModal="closeModal"
         />
     </section>
 </template>
@@ -62,9 +68,11 @@ import axios from "axios";
 import solutionItem from "./components/solutionItem";
 import modalReplace from "./components/modalReplace";
 import modalAdd from "./components/modalAdd";
+import ModalInfo from "./components/modalInfo";
 
 export default {
     components: {
+        ModalInfo,
         modalAdd,
         solutionItem,
         modalReplace
@@ -74,6 +82,10 @@ export default {
         currentProduct: {},
         currentDish: {},
         activeTab: {},
+        info: {
+            message: '',
+            status: 'success',
+        },
         emptyProduct: {
             title: 'Другой продукт',
             id: 'other',
@@ -85,6 +97,7 @@ export default {
         tabs: [],
         products: [],
         product: {},
+        showInfo: false,
         showModal: false,
         showAddModal: false,
     }),
@@ -110,10 +123,8 @@ export default {
         },
         closeModal() {
             this.showModal = false
-            this.removeBodyClass()
-        },
-        closeAddModal() {
             this.showAddModal = false
+            this.showInfo = false
             this.removeBodyClass()
         },
         openAddModal() {
@@ -183,13 +194,14 @@ export default {
             axios.post('/addToCartGot', formData, config)
                 .then(function (res) {
                     let {count, products} = res.data
-                    console.log(count, products)
                     document.querySelector('.cart-counter').innerHTML = count || 0
-                    // existingObj.output2 = res.data.output;
+                    existingObj.info.message = `<p>Товары добавлены в корзину.</p><p>В корзине ${count} товаров</p>`
                 })
                 .catch(function (err) {
-                    // existingObj.output2 = 'Ошибка заполнение формы';
+                    existingObj.info.message = 'Возникла ошибка'
+                    existingObj.info.status = 'danger'
                 });
+            this.showInfo = true
         },
 
         deleteZap(id) {
