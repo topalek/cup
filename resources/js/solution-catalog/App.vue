@@ -182,10 +182,13 @@ export default {
 
             axios.post('/addToCartGot', formData, config)
                 .then(function (res) {
-                    existingObj.output2 = res.data.output;
+                    let {count, products} = res.data
+                    console.log(count, products)
+                    document.querySelector('.cart-counter').innerHTML = count || 0
+                    // existingObj.output2 = res.data.output;
                 })
                 .catch(function (err) {
-                    existingObj.output2 = 'Ошибка заполнение формы';
+                    // existingObj.output2 = 'Ошибка заполнение формы';
                 });
         },
 

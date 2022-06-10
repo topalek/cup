@@ -2532,15 +2532,18 @@ __webpack_require__.r(__webpack_exports__);
                 null
             )
 
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/quiz/App.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+            /* hot reload */
+            if (false) {
+                var api;
+            }
+            component.options.__file = "resources/js/quiz/App.vue"
+            /* harmony default export */
+            const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
-/***/ }),
+            /***/
+        }),
 
-/***/
-        "./resources/js/quiz/App.vue?vue&type=script&lang=js&":
+        /***/ "./resources/js/quiz/App.vue?vue&type=script&lang=js&":
         /*!************************************************************!*\
           !*** ./resources/js/quiz/App.vue?vue&type=script&lang=js& ***!
           \************************************************************/
@@ -2561,8 +2564,7 @@ component.options.__file = "resources/js/quiz/App.vue"
             /***/
         }),
 
-        /***/
-        "./resources/js/quiz/App.vue?vue&type=template&id=1d4de376&":
+        /***/ "./resources/js/quiz/App.vue?vue&type=template&id=1d4de376&":
         /*!******************************************************************!*\
           !*** ./resources/js/quiz/App.vue?vue&type=template&id=1d4de376& ***!
           \******************************************************************/
@@ -2572,10 +2574,8 @@ component.options.__file = "resources/js/quiz/App.vue"
             __webpack_require__.r(__webpack_exports__);
             /* harmony export */
             __webpack_require__.d(__webpack_exports__, {
-                /* harmony export */
-                "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.render),
-                /* harmony export */
-                "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+                /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.render),
+                /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_1d4de376___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
                 /* harmony export */
             });
             /* harmony import */
@@ -2585,15 +2585,16 @@ component.options.__file = "resources/js/quiz/App.vue"
             /***/
         }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=template&id=1d4de376&":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=template&id=1d4de376& ***!
-  \*********************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+        /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=template&id=1d4de376&":
+        /*!*********************************************************************************************************************************************************************************************************!*\
+          !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/quiz/App.vue?vue&type=template&id=1d4de376& ***!
+          \*********************************************************************************************************************************************************************************************************/
+        /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export */
+            __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
@@ -2648,95 +2649,95 @@ __webpack_require__.r(__webpack_exports__);
                                         }),
                                         0
                                     ),
-            _vm._v(" "),
-            _c(
-                "div",
-                {
-                    staticClass: "quiz__item",
-                    class: _vm.current === 2 ? "active" : "",
-                },
-                [
-                    _c("div", {staticClass: "quiz__item-group"}, [
-                        _c("input", {
-                            directives: [
-                                {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.adults,
-                                    expression: "adults",
-                                },
-                            ],
-                            staticClass: "test",
-                            attrs: {type: "text", id: "adults_count"},
-                            domProps: {value: _vm.adults},
-                            on: {
-                                input: function ($event) {
-                                    if ($event.target.composing) {
-                                        return
-                                    }
-                                    _vm.adults = $event.target.value
-                                },
-                            },
-                        }),
-                        _vm._v(" "),
-                        _c("label", {attrs: {for: "adults_count"}}, [
-                            _vm._v("взрослые"),
-                        ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", {staticClass: "quiz__item-group"}, [
-                        _c("input", {
-                            directives: [
-                                {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.kids,
-                                    expression: "kids",
-                                },
-                            ],
-                            attrs: {type: "text", id: "child_count"},
-                            domProps: {value: _vm.kids},
-                            on: {
-                                input: function ($event) {
-                                    if ($event.target.composing) {
-                                        return
-                                    }
-                                    _vm.kids = $event.target.value
-                                },
-                            },
-                        }),
-                        _vm._v(" "),
-                        _c("label", {attrs: {for: "child_count"}}, [
-                            _vm._v("Дети"),
-                        ]),
-                    ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "quiz__item-group" }, [
-                  _c("input", {
-                      directives: [
-                          {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.datebegin,
-                              expression: "datebegin",
-                          },
-                      ],
-                      attrs: {type: "date", id: "date"},
-                      domProps: {value: _vm.datebegin},
-                      on: {
-                          input: function ($event) {
-                              if ($event.target.composing) {
-                                  return
-                              }
-                              _vm.datebegin = $event.target.value
-                          },
-                      },
-                  }),
-                    _vm._v(" "),
-                    _c("label", {attrs: {for: "date"}}, [
-                        _vm._v("дата проведения"),
-                    ]),
-                ]),
+                                    _vm._v(" "),
+                                    _c(
+                                        "div",
+                                        {
+                                            staticClass: "quiz__item",
+                                            class: _vm.current === 2 ? "active" : "",
+                                        },
+                                        [
+                                            _c("div", {staticClass: "quiz__item-group"}, [
+                                                _c("input", {
+                                                    directives: [
+                                                        {
+                                                            name: "model",
+                                                            rawName: "v-model",
+                                                            value: _vm.adults,
+                                                            expression: "adults",
+                                                        },
+                                                    ],
+                                                    staticClass: "test",
+                                                    attrs: {type: "text", id: "adults_count"},
+                                                    domProps: {value: _vm.adults},
+                                                    on: {
+                                                        input: function ($event) {
+                                                            if ($event.target.composing) {
+                                                                return
+                                                            }
+                                                            _vm.adults = $event.target.value
+                                                        },
+                                                    },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("label", {attrs: {for: "adults_count"}}, [
+                                                    _vm._v("взрослые"),
+                                                ]),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("div", {staticClass: "quiz__item-group"}, [
+                                                _c("input", {
+                                                    directives: [
+                                                        {
+                                                            name: "model",
+                                                            rawName: "v-model",
+                                                            value: _vm.kids,
+                                                            expression: "kids",
+                                                        },
+                                                    ],
+                                                    attrs: {type: "text", id: "child_count"},
+                                                    domProps: {value: _vm.kids},
+                                                    on: {
+                                                        input: function ($event) {
+                                                            if ($event.target.composing) {
+                                                                return
+                                                            }
+                                                            _vm.kids = $event.target.value
+                                                        },
+                                                    },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("label", {attrs: {for: "child_count"}}, [
+                                                    _vm._v("Дети"),
+                                                ]),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("div", {staticClass: "quiz__item-group"}, [
+                                                _c("input", {
+                                                    directives: [
+                                                        {
+                                                            name: "model",
+                                                            rawName: "v-model",
+                                                            value: _vm.datebegin,
+                                                            expression: "datebegin",
+                                                        },
+                                                    ],
+                                                    attrs: {type: "date", id: "date"},
+                                                    domProps: {value: _vm.datebegin},
+                                                    on: {
+                                                        input: function ($event) {
+                                                            if ($event.target.composing) {
+                                                                return
+                                                            }
+                                                            _vm.datebegin = $event.target.value
+                                                        },
+                                                    },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("label", {attrs: {for: "date"}}, [
+                                                    _vm._v("дата проведения"),
+                                                ]),
+                                            ]),
               ]
             ),
             _vm._v(" "),
@@ -2820,7 +2821,7 @@ __webpack_require__.r(__webpack_exports__);
                         _vm._v(" "),
                         _c("label", {attrs: {for: "name"}}, [_vm._v("Имя")]),
                     ]),
-              ]
+                ]
             ),
             _vm._v(" "),
             _vm.sendResults === false
@@ -15039,15 +15040,14 @@ function getOuterHTML (el) {
             /***/
         }),
 
-        /***/
-        "./node_modules/axios/package.json":
+        /***/ "./node_modules/axios/package.json":
         /*!*****************************************!*\
           !*** ./node_modules/axios/package.json ***!
           \*****************************************/
         /***/ ((module) => {
 
             "use strict";
-            module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+            module.exports = JSON.parse('{"_args":[["axios@0.21.4","/home/topalek/www/cup"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/home/topalek/www/cup","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
             /***/
         })

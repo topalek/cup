@@ -228,13 +228,14 @@ class CartController extends Controller
     {
         $productIds = $request->productsvr;
         $products = Product::query()->whereIn('id', $productIds)->get();
+        $noImgUrl = '/assets/img/noImage.jpg';
         if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
         $cart_id = $_COOKIE['cart_id'];
-        \Cart::session($cart_id);
+        $cart = \Cart::session($cart_id);
 
         $ids = $products->pluck('id')->toArray();
         $notAvailable = array_diff($productIds, $ids);
-//        dd($notAvailable);
+        $otherProduct = Product::query()->where('url', 'other')->first();
 
         foreach ($products as $product) {
             $imageres = '';
@@ -246,7 +247,7 @@ class CartController extends Controller
                     $imagesalt = $image2[0]['alt'];
                 };
             };
-            \Cart::add([
+            $cart->add([
                 'id'         => $product->id,
                 'name'       => $product->name,
                 'price'      => $product->price_full,
@@ -259,10 +260,26 @@ class CartController extends Controller
                     'weight' => $product->weight_full,
                 ]
             ]);
-            $cart_id_w = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
-            $data['basket'] = $cart_id_w;
         }
-        return response()->json(\Cart::getContent());
+        foreach ($notAvailable as $item) {
+            $cart->add([
+                'id'         => $otherProduct->id,
+                'name'       => $otherProduct->name,
+                'price'      => $otherProduct->price_full,
+                'quantity'   => (int)$otherProduct->countpr,
+                'attributes' => [
+                    'id'     => $otherProduct->id,
+                    'pr'     => 'product',
+                    'img'    => $noImgUrl,
+                    'imgalt' => $imagesalt,
+                    'weight' => $otherProduct->weight_full,
+                ]
+            ]);
+        }
+        $data['products'] = $cart->getContent();
+        $data['count'] = $cart->getTotalQuantity();
+
+        return response()->json($data);
     }
 
     public function removeCart(Request $request)
