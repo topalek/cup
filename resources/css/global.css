@@ -728,7 +728,7 @@ h2 {
     padding: 50px 50px 30px;
     max-height: 80vh;
     height: 100%;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .modal__title {
@@ -901,8 +901,8 @@ h2 {
 
 .modal__results {
     margin-top: 20px;
-    height: 315px;
-    overflow: hidden;
+    height: 560px;
+    overflow-y: auto;
 }
 
 .modal__results .list {

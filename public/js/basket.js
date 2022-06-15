@@ -1,25 +1,28 @@
 /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!***************************************!*\
-  !*** ./resources/assets/js/basket.js ***!
-  \***************************************/
-$(document).on("click", ".data-select", function () {
-  $(this).toggleClass("data-select--active");
-});
-$(document).on("click", ".data-select__item", function () {
-  var text = $(this).text();
-  $(this).parents(".data-select").find(".top").text(text);
-}); // new js
+    var __webpack_exports__ = {};
+    /*!***************************************!*\
+      !*** ./resources/assets/js/basket.js ***!
+      \***************************************/
+    $(document).on("click", ".data-select", function () {
+        $(this).toggleClass("data-select--active");
+    }); // change value
 
-$(".basket__row-button").on("click", function () {
-  $(this).parents(".basket__row").find(".compos-kid__list").toggleClass("compos-kid__list--active");
-  $(this).toggleClass("basket__row-button--active");
-}); // маски на поля
+    $(document).on("click", ".data-select__item", function () {
+        var text = $(this).text();
+        $(this).parents(".data-select").find(".top").text(text);
+        $(this).parents(".data-select").find(".data-select__input").val(text);
+    }); // end change value
+// new js
 
-$(".counter__input, .sum-count__input, .js-guest-count").on("input", function () {
-  this.value = this.value.replace(/[^0-9\.]/g, "");
-});
-$(".input-group--phone").mask("+7 (000)-000-00-00", {}); // счетчики
+    $(".basket__row-button").on("click", function () {
+        $(this).parents(".basket__row").find(".compos-kid__list").toggleClass("compos-kid__list--active");
+        $(this).toggleClass("basket__row-button--active");
+    }); // маски на поля
+
+    $(".counter__input, .sum-count__input, .js-guest-count").on("input", function () {
+        this.value = this.value.replace(/[^0-9\.]/g, "");
+    });
+    $(".input-group--phone").mask("+7 (000)-000-00-00", {}); // счетчики
 // ==============================
 
 $(".sum-count__subt").on("click", function () {

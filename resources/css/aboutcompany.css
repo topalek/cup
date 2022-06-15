@@ -171,11 +171,12 @@
   z-index: -1;
 }
 .garant__item-text {
-  font-size: 27px;
-  padding: 0 126px 55px 41px;
-  /* width: 182px; */
-  position: relative;
-  z-index: 2;
+    font-size: 27px;
+    padding: 0 126px 55px 41px;
+    /* width: 182px; */
+    position: relative;
+    z-index: 2;
+    word-break: break-word;
 }
 /* повара */
 .person-chef {

@@ -1,14 +1,18 @@
 $(document).on("click", ".data-select", function () {
-  $(this).toggleClass("data-select--active");
+    $(this).toggleClass("data-select--active");
 });
+
+// change value
 $(document).on("click", ".data-select__item", function () {
-  let text = $(this).text();
-  $(this).parents(".data-select").find(".top").text(text);
+    let text = $(this).text();
+    $(this).parents(".data-select").find(".top").text(text);
+    $(this).parents(".data-select").find(".data-select__input").val(text);
 });
+// end change value
 
 // new js
 $(".basket__row-button").on("click", function () {
-  $(this)
+    $(this)
     .parents(".basket__row")
     .find(".compos-kid__list")
     .toggleClass("compos-kid__list--active");

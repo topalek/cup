@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-dompdf": "^1.0",
         "darryldecode/cart": "^4.2",
         "dereuromark/media-embed": "^0.5.6",
         "djmitry/laravel-youtube-video": "dev-master",

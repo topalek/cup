@@ -44,11 +44,11 @@ Route::post('/order/create', [OrderController::class, 'create'])->name('order.cr
 Route::delete('/order/{order}/delete/{product}', [OrderController::class, 'deleteProduct'])->name('order.delete.product');
 
 
-//Route::get('/format/{elem}', [FrontendController::class, 'renderFormatCategory']);
 Route::get('/format/{elem}', [FrontendController::class, 'renderFormatelem']);
 Route::get('/povod/{elem}', [FrontendController::class, 'renderPovodEl']);
 
 Route::get('/politics', [FrontendController::class, 'renderPolitics']);
+Route::get('/agreement', [FrontendController::class, 'renderAgreement']);
 
 
 
@@ -64,44 +64,6 @@ Route::get("/menu/section/", function () {
 Route::get('/menu/gotovie', function () {
     return view('menu.ready.index', ['title' => 'Готовые решения']);
 });
-
-
-
-/*Route::get('/wedding', function () {
-    return view('wedding', ['title' => 'Готовые решения']);
-});
-Route::get('/welcom', function () {
-    return view('welcom', ['title' => 'Готовые решения']);
-});*/
-
-
-
-
-
-/*Route::get('/menu/gotovie/1', function () {
-    return view('menu.ready.detail', ['title' => 'Готовые решения для детей 8 лет']);
-});*/
-
-/*Route::get('/uslugi', function () {
-    return view('service', ['title' => 'Услуги']);
-});*/
-
-
-/*Route::get('/oformlenie/style1', function () {
-    return view('oformlenie.detail', ['title' => 'Стиль 1']);
-});*/
-
-/*Route::get('/portfolio', function () {
-    return view('portfolio', ['title' => 'Портфолио']);
-});*/
-
-/*Route::get('/portfolio/1', function () {
-    return view('portfolio.detail', ['title' => 'Портфолио детальная']);
-});*/
-
-// Route::get('/blog/1', function(){
-//     return view('blog', ['title' => 'Блог']);
-// });
 
 Route::get('/cabinet', function () {
     return view('cabinet.index', ['title' => 'Личный кабинет']);
@@ -132,7 +94,12 @@ Route::name('user.')->group(function(){
     Route::get('/kabinet/settings', [UserController::class, 'KabinetSet'])->name('settings');
     Route::get('/kabinet/history-order', [UserController::class, 'KabinetHistOrd'])->name('history');
     Route::get('/kabinet/order/{order}', [UserController::class, 'order'])->name('order');
-    Route::get('/kabinet/notifications', [UserController::class, 'KabinetNot'])->name('notifications');
+    Route::get('/kabinet/order/{order}/download', [UserController::class, 'orderDownload'])->name(
+        'order.download'
+    );
+    Route::get('/kabinet/notifications', [UserController::class, 'KabinetNot'])->name(
+        'notifications'
+    );
     Route::get('/kabinet/personal-area', [UserController::class, 'KabinePersArea'])->name('personal');
     Route::post('/kabinet/personal-area', [UserController::class, 'KabinePersSaveArea'])->name('savedata');
     Route::post('/kabinet/settings', [UserController::class, 'KabineSavePass'])->name('setsavepas');

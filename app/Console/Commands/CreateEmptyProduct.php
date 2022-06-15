@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 class CreateEmptyProduct extends Command
 {
     protected $signature = 'product:empty';
-    protected $description = 'Создать путой товар "Другой товар"';
+    protected $description = 'Создать пустой товар "Другой товар"';
 
     public function handle()
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\SEO;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -220,7 +221,18 @@ class UserController extends Controller
             $data['page'] = SEO::where('page', 'notifications')->first();
             $data['order'] = $order;
 
-            return view('users.cabinet.order', $data);
+            return view('cabinet.order', $data);
+        };
+
+        return redirect(route('user.login'));
+    }
+
+    public function orderDownload(Order $order)
+    {
+        if (Auth::check()) {
+            $pdf = PDF::loadView('cabinet.pdf', compact('order'));
+//            $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+            return $pdf->download('order.pdf');
         };
 
         return redirect(route('user.login'));

@@ -65,7 +65,8 @@
     margin-top: 40px;
   }
   .footer__city {
-    margin-top: 26px;
+      margin-top: 26px;
+      text-align: center;
   }
   .footer__list {
     flex-direction: column;

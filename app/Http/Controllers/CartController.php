@@ -26,7 +26,6 @@ class CartController extends Controller
             $cart_id_w = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
             $data['basket'] = $cart_id_w;
         }
-        //dd($cartItems);
         return view('basket', $data, compact('cartItems'));
     }
 
@@ -40,8 +39,6 @@ class CartController extends Controller
         if ($pr == 'product') {
             $product = Product::where('id', $request->id)->first();
             $idprod = $product->id;
-
-            //dd($idprod);
 
             $imageres = '';
             $imagesalt = '';

@@ -256,6 +256,19 @@ class FrontendController extends Controller
         return view('policy', $data);
     }
 
+    public function renderAgreement()
+    {
+        $data['cont'] = SEO::where('page', 'contacts')->first();
+        $data['page'] = SEO::where('page', 'agreement')->first();
+
+        $data['basket'] = 0;
+        if (isset($_COOKIE['cart_id'])) {
+            $data['basket'] = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
+        }
+
+        return view('policy', $data);
+    }
+
     public function renderReviewsDetail($url)
     {
         $data['cont'] = SEO::where('page', 'contacts')->first();

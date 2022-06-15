@@ -29,7 +29,10 @@
                 <div class="personalArea__wrap">
                     @include('include.menulk')
                     <main style="width: 100%">
-                        <h2 style="margin-left: 40px">Заказ № {{$order->id}}</h2>
+                        <div class="page-header" style="display: flex; justify-content: space-between;align-items: center">
+                            <h2 style="margin-left: 40px">Заказ № {{$order->id}}</h2>
+                            <button class="btn btn-info" onclick="window.location.href = '{{route('user.order.download',$order)}}'">Скачать PDF</button>
+                        </div>
                         <table class="history-order table">
                             <thead>
                             <tr>
@@ -57,5 +60,4 @@
             </div>
         </section>
     </main>
-    <br>
 @endsection
