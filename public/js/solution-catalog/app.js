@@ -3012,15 +3012,15 @@ module.exports = {
                 try {
                     // when when somebody has screwed with setTimeout but no I.E. maddness
                     return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
+                } catch (e) {
+                    try {
+                        // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+                        return cachedSetTimeout.call(null, fun, 0);
+                    } catch (e) {
+                        // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+                        return cachedSetTimeout.call(this, fun, 0);
+                    }
+                }
 
 
 }
@@ -3121,16 +3121,17 @@ process.browser = true;
 process.env = {};
 process.argv = [];
 process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
+            process.versions = {};
 
-function noop() {}
+            function noop() {
+            }
 
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
+            process.on = noop;
+            process.addListener = noop;
+            process.once = noop;
+            process.off = noop;
+            process.removeListener = noop;
+            process.removeAllListeners = noop;
             process.emit = noop;
             process.prependListener = noop;
             process.prependOnceListener = noop;
@@ -3497,11 +3498,8 @@ process.removeAllListeners = noop;
             var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
-
-
-
-/* normalize component */
-;
+            /* normalize component */
+            ;
             var component = (0, _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
                 _App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
                 _App_vue_vue_type_template_id_3e21dab5___WEBPACK_IMPORTED_MODULE_0__.render,
@@ -4947,16 +4945,16 @@ process.removeAllListeners = noop;
                             (this.$vnode && this.$vnode.ssrContext) || // stateful
                             (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
                         // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
+                        if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                            context = __VUE_SSR_CONTEXT__
+                        }
+                        // inject component styles
+                        if (injectStyles) {
+                            injectStyles.call(this, context)
+                        }
+                        // register component module identifier for async chunk inferrence
+                        if (context && context._registeredComponents) {
+                            context._registeredComponents.add(moduleIdentifier)
       }
     }
     // used by ssr in case component is cached and beforeCreate

@@ -25,14 +25,14 @@
     $(".input-group--phone").mask("+7 (000)-000-00-00", {}); // счетчики
 // ==============================
 
-$(".sum-count__subt").on("click", function () {
-  /*вычетание и прибавление товаров*/
-  var total = parseInt($('.cart-counter').text());
-  var totalitem = parseInt($('.counter_' + id)[0].value);
-  $('.cart-counter').text(total - totalitem);
-  var inputValue = +$(this).parents(".sum-count__counter").find(".sum-count__input").val();
+    $(".sum-count__subt").on("click", function () {
+        /*вычетание и прибавление товаров*/
+        var total = parseInt($('.cart-counter').text());
+        var totalitem = parseInt($('.counter_' + id)[0].value);
+        $('.cart-counter').text(total - totalitem);
+        var inputValue = +$(this).parents(".sum-count__counter").find(".sum-count__input").val();
 
-  if (inputValue > 0) {
+        if (inputValue > 0) {
     $(this).parents(".sum-count__counter").find(".sum-count__input").val(inputValue - 1);
   } else {
     $(this).parents(".sum-count__counter").find(".sum-count__input").val(0);

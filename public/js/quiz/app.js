@@ -2760,70 +2760,70 @@ __webpack_require__.r(__webpack_exports__);
                                             ]),
                                         ]
                                     ),
-            _vm._v(" "),
-            _c(
-                "div",
-                {
-                    staticClass: "quiz__item",
-                    class: _vm.current === 4 ? "active" : "",
-                },
-                [
-                    _c(
-                        "div",
-                        {staticClass: "quiz__item-group"},
-                        [
-                            _c("the-mask", {
-                                attrs: {
-                                    mask: "+7 (XXX) XXX-XX-XX",
-                                    masked: true,
-                                    tokens: _vm.phoneRegular,
-                                    type: "text",
-                                    id: "phone",
-                                    required: "",
-                                    placeholder: "+7 (___) ___-__-__",
-                                },
-                                model: {
-                                    value: _vm.phone,
-                                    callback: function ($$v) {
-                                        _vm.phone = $$v
-                                    },
-                                    expression: "phone",
-                                },
-                            }),
-                            _vm._v(" "),
-                            _c("label", {attrs: {for: "phone"}}, [
-                                _vm._v("Телефон"),
-                            ]),
-                        ],
-                        1
-                    ),
-                    _vm._v(" "),
-                    _c("div", {staticClass: "quiz__item-group"}, [
-                        _c("input", {
-                            directives: [
-                                {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.name,
-                                    expression: "name",
-                                },
-                            ],
-                            attrs: {required: "", type: "text", id: "name"},
-                            domProps: {value: _vm.name},
-                            on: {
-                                input: function ($event) {
-                                    if ($event.target.composing) {
-                                        return
-                                    }
-                                    _vm.name = $event.target.value
-                                },
-                            },
-                        }),
-                        _vm._v(" "),
-                        _c("label", {attrs: {for: "name"}}, [_vm._v("Имя")]),
-                    ]),
-                ]
-            ),
+                                    _vm._v(" "),
+                                    _c(
+                                        "div",
+                                        {
+                                            staticClass: "quiz__item",
+                                            class: _vm.current === 4 ? "active" : "",
+                                        },
+                                        [
+                                            _c(
+                                                "div",
+                                                {staticClass: "quiz__item-group"},
+                                                [
+                                                    _c("the-mask", {
+                                                        attrs: {
+                                                            mask: "+7 (XXX) XXX-XX-XX",
+                                                            masked: true,
+                                                            tokens: _vm.phoneRegular,
+                                                            type: "text",
+                                                            id: "phone",
+                                                            required: "",
+                                                            placeholder: "+7 (___) ___-__-__",
+                                                        },
+                                                        model: {
+                                                            value: _vm.phone,
+                                                            callback: function ($$v) {
+                                                                _vm.phone = $$v
+                                                            },
+                                                            expression: "phone",
+                                                        },
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c("label", {attrs: {for: "phone"}}, [
+                                                        _vm._v("Телефон"),
+                                                    ]),
+                                                ],
+                                                1
+                                            ),
+                                            _vm._v(" "),
+                                            _c("div", {staticClass: "quiz__item-group"}, [
+                                                _c("input", {
+                                                    directives: [
+                                                        {
+                                                            name: "model",
+                                                            rawName: "v-model",
+                                                            value: _vm.name,
+                                                            expression: "name",
+                                                        },
+                                                    ],
+                                                    attrs: {required: "", type: "text", id: "name"},
+                                                    domProps: {value: _vm.name},
+                                                    on: {
+                                                        input: function ($event) {
+                                                            if ($event.target.composing) {
+                                                                return
+                                                            }
+                                                            _vm.name = $event.target.value
+                                                        },
+                                                    },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("label", {attrs: {for: "name"}}, [_vm._v("Имя")]),
+                                            ]),
+                                        ]
+                                    ),
             _vm._v(" "),
             _vm.sendResults === false
               ? _c("div", { staticClass: "events__link events__link--quiz" }, [

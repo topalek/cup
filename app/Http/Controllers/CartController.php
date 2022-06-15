@@ -64,7 +64,7 @@ class CartController extends Controller
             ]);
             $cart_id_w = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
             $data['basket'] = $cart_id_w;
-            return response()->json(\Cart::getContent());
+            return response()->json(\Cart::getTotalQuantity());
         } else {
             $productgr = Productgr::where('id', $request->id)->first();
             foreach ($productgr->products as $itemel) {
@@ -217,7 +217,7 @@ class CartController extends Controller
                 $cart_id_w = \Cart::session($_COOKIE['cart_id'])->getTotalQuantity();
                 $data['basket'] = $cart_id_w;
             };
-            return response()->json(\Cart::getContent());
+            return response()->json(\Cart::getTotalQuantity());
         }
     }
 
@@ -283,21 +283,8 @@ class CartController extends Controller
     {
         \Cart::session($_COOKIE['cart_id']);
         \Cart::remove($request->id);
-        //session($cart_id2)->flash('success', 'Item Cart Remove Successfully !');
-        //dd($cartItems);
-
 
         return response()->json(\Cart::getContent());
-
-
-        //dd($cartItems);
-        //return view('basket', ['title' => 'Корзина'], compact('cartItems'));
-
-        //$cart_id = $_COOKIE['cart_id'];
-        /*\Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-        return redirect()->route('basket');*/
-        //return response()->json(['id'=>$request->id]);
     }
 
     public function updateCart(Request $request)

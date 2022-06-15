@@ -6,7 +6,6 @@ use App\Models\Order;
 use App\Orchid\Layouts\OrderListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
-use Orchid\Screen\TD;
 
 class OrderListScreen extends Screen
 {
@@ -16,7 +15,7 @@ class OrderListScreen extends Screen
     public function query(): array
     {
         return [
-            'orders' => Order::filters()->defaultSort('id')->paginate()
+            'orders' => Order::filters()->orderBy('id', 'desc')->defaultSort('id')->paginate()
         ];
     }
 
